@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('nim')->unique();
             $table->string('password');
-            $table->string('nama_lengkap')->nullable();
-            $table->enum('jalur_pendaftaran', ['SNMPTN', 'SBMPTN', 'Mandiri', 'Mandiri lanjutan', 'Afirmasi'])->nullable();
-            $table->foreignId('program_studi_id')->constrained('program_studis')->nullable();
-            $table->foreignId('angkatan_id')->constrained('angkatans')->nullable();
+            $table->string('password_no_encrypt')->nullable();
+            $table->string('nama_lengkap');
+            $table->enum('jalur_pendaftaran', ['SNMPTN', 'SBMPTN', 'Mandiri', 'Mandiri lanjutan', 'Afirmasi']);
+            $table->foreignId('program_studi_id')->constrained('program_studis');
+            $table->foreignId('angkatan_id')->constrained('angkatans');
             $table->enum('mahasiswa', ['Mahasiswa baru', 'Mahasiswa lama'])->nullable();
             $table->enum('ganti_password', ['Sudah', 'Belum'])->nullable();
             $table->string('file_profil')->nullable();
