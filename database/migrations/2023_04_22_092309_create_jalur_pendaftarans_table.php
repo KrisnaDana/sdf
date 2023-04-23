@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('periode_pendaftarans', function (Blueprint $table) {
+        Schema::create('jalur_pendaftarans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('program_studi_id')->constrained('program_studis');
-            $table->foreignId('jalur_pendaftaran_id')->constrained('jalur_pendaftarans');
-            $table->dateTime('mulai');
-            $table->dateTime('berakhir');
+            $table->string('nama');
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('periode_pendaftarans');
+        Schema::dropIfExists('jalur_pendaftarans');
     }
 };

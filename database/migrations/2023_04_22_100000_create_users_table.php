@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('password_no_encrypt')->nullable();
             $table->string('nama_lengkap');
-            $table->enum('jalur_pendaftaran', ['SNMPTN', 'SBMPTN', 'Mandiri', 'Mandiri lanjutan', 'Afirmasi']);
+            $table->foreignId('jalur_pendaftaran_id')->constrained('jalur_pendaftarans');
             $table->foreignId('program_studi_id')->constrained('program_studis');
             $table->foreignId('angkatan_id')->constrained('angkatans');
             $table->enum('mahasiswa', ['Mahasiswa baru', 'Mahasiswa lama'])->nullable();

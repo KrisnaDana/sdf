@@ -19,7 +19,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $guarded = [];
+    protected $guarded = ['id', 'email_verified_at', 'remember_token', 'created_at', 'updated_at'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -42,6 +42,10 @@ class User extends Authenticatable
 
     public function program_studi(): BelongsTo {
         return $this->belongsTo(ProgramStudi::class);
+    }
+
+    public function jalur_pendaftaran(): BelongsTo {
+        return $this->belongsTo(JalurPendaftaran::class);
     }
 
     public function angkatan(): BelongsTo {

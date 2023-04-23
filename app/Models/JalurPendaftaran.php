@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Angkatan extends Model
+class JalurPendaftaran extends Model
 {
     use HasFactory;
 
@@ -14,5 +14,9 @@ class Angkatan extends Model
 
     public function users(): HasMany {
         return $this->hasMany(User::class);
+    }
+
+    public function periode_pendaftarans(): HasMany {
+        return $this->hasMany(PeriodePendaftaran::class);
     }
 }

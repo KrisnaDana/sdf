@@ -10,7 +10,7 @@ class ProgramStudi extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 
     public function users(): HasMany {
         return $this->hasMany(User::class);

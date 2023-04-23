@@ -10,9 +10,13 @@ class PeriodePendaftaran extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 
     public function program_studi(): BelongsTo {
         return $this->belongsTo(ProgramStudi::class);
+    }
+
+    public function jalur_pendaftaran(): BelongsTo {
+        return $this->belongsTo(JalurPendaftaran::class);
     }
 }
