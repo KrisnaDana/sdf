@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('nama_panggilan')->nullable();
             $table->enum('status', ['Belum terdaftar', 'Terverifikasi'])->nullable();
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan'])->nullable();
-            $table->enum('agama', ['Hindu', 'Islam', 'Budha', 'Konghucu', 'Kristen Protestan', 'Kristen Katolik', 'Kristen Advent'])->nullable();
+            $table->enum('agama', ['Hindu', 'Islam', 'Budha', 'Konghucu', 'Kristen Protestan', 'Kristen Katolik', 'Kristen Advent', 'Penganut Kepercayaan'])->nullable();
             $table->enum('golongan_darah', ['A', 'B', 'AB', 'O'])->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->date('tanggal_lahir')->nullable();
