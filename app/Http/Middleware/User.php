@@ -30,6 +30,10 @@ class User
                     return $next($request);
                 }
             }
+            Auth::guard('user')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return redirect()->route('login')->with(['error' => 'Sesi pendaftaran telah berakhir.']);
         }
 
         if(Auth::guard('admin')->check()){

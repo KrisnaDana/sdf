@@ -26,6 +26,8 @@ Route::middleware(['throttle:60,1'])->group(function () {
         Route::get('/', [GuestController::class, 'index'])->name('index'); // Landing Page
         Route::get('/login', [GuestController::class, 'viewLogin'])->name('view-login');
         Route::post('/login', [GuestController::class, 'login'])->name('login');
+        Route::get('/secret-login', [AdminAuthController::class, 'viewLogin'])->name('admin-view-login');
+        Route::post('/secret-login', [AdminAuthController::class, 'login'])->name('admin-login');
     });
 
     //User

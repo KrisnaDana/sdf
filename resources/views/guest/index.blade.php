@@ -6,30 +6,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="GdY2fjlMijpYrGAM2WM9TsHULDBVcupKLvwtCeBp">
-    <title>SMFT - Student Day 2023
-    </title>
+    <title>SMFT</title>
     <meta name="description:" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" href="{{ asset('img/icon.png') }}">
+    <link rel="icon" type="image/png" href="{{url('img/icon.png')}}">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <!-- Google Fonts dan Icon -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Icon+Name">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <!-- Font-Awesome CSS -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/fontawesome-all.css">
-    <link rel="stylesheet" href="fontawesome/css/all.min.css">
-    <!-- Animate -->
-    <link rel="stylesheet" type="text/css" href="css/animate.min.css">
-    <!-- Main Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" href="lib/magnific-popup/magnific-popup.css">
-
+    <link rel="stylesheet"href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="{{url('css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{url('css/fontawesome-all.css')}}">
+    <link rel="stylesheet" href="{{url('fontawesome/css/all.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('css/animate.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('css/style.css')}}">
+    <link rel="stylesheet" href="{{url('lib/magnific-popup/magnific-popup.css')}}">
     <style>
         .modal a {
             text-decoration: none;
@@ -51,25 +42,20 @@
             border-radius: 10px;
         }
     </style>
-
 </head>
 
 <body>
-
     <header id="header">
         <div class="container">
-
-            <div id="logo" class="pull-left">
-            </div>
-
+            <div id="logo" class="pull-left"></div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li class=""><a href="/">Home</a></li>
+                    <li class=""><a href="{{route('index')}}">Home</a></li>
                     <li><a href="#">Tentang</a></li>
                     <li><a href="#">Galeri</a></li>
                     <li class="menu-has-children"><a href="#">Event</a>
                         <ul>
-                            <li><a href="/">Student Day</a></li>
+                            <li><a href="{{route('login')}}">Student Day</a></li>
                             <li><a href="#">GrAnaT</a></li>
                             <li><a href="#">Bazzar Teknik</a></li>
                             <li><a href="#">TBTN</a></li>
@@ -92,22 +78,20 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-has-children     menu-active
-"><a href="#">Penerimaan Mahasiswa</a>
+                    <li class="menu-has-children menu-active"><a href="#">Penerimaan Mahasiswa</a>
                         <ul>
-                            <li><a href="/">Student Day</a></li>
+                            <li><a href="{{route('login')}}">Student Day</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Kontak</a></li>
                 </ul>
-            </nav><!-- #nav-menu-container -->
+            </nav><
         </div>
-    </header><!-- #header -->
-    <div class="jumbotron jumbotron-fluid"
-        style="background: #3C3B3F; background: -webkit-linear-gradient(to top, #605C3C, #3C3B3F);  background: linear-gradient(to top, #605C3C, #3C3B3F); height: 100vh;">
+    </header>
+    <div class="jumbotron jumbotron-fluid" style="background: #3C3B3F; background: -webkit-linear-gradient(to top, #605C3C, #3C3B3F);  background: linear-gradient(to top, #605C3C, #3C3B3F); height: 100vh;">
         <div class="container" style="margin-top: 10vh">
             <div class="text-center">
-                <img class="img-fluid mx-auto" src="img/logo-sd-2023.png" style="max-height:70vh;" alt="">
+                <img class="img-fluid mx-auto" src="{{url('img/logo-sd-2023.png')}}" style="max-height:70vh;" alt="">
             </div>
         </div>
     </div>
@@ -121,8 +105,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Pastikan anda menyetujui <strong>"SYARAT DAN KETENTUAN AKSES KETENTUAN VERIFIKASI STUDENT DAY
-                        2021".</strong>
+                    Pastikan anda menyetujui <strong>"SYARAT DAN KETENTUAN AKSES KETENTUAN VERIFIKASI STUDENT DAY {{date('Y')}}".</strong>
                 </div>
                 <div class="modal-footer">
                     <button onclick="location.href='/downloadBerkasVerif';" id="tombol" name="tombol"
@@ -159,7 +142,6 @@
                     </div>
                 </div>
 
-
                 <div class="mb-4">
                     <section id="facts">
                         <div class="container wow fadeIn">
@@ -179,13 +161,11 @@
                                     <br>
                                 </p>
                             </div>
-
                             <p class="text-center">
                                 <a data-toggle="modal" data-target="#daftar" id="verify"
                                     style="border-radius:22px;color:white;" class="btn btn-info">Link Ketentuan
                                     Verifikasi</a>
                             </p>
-
                         </div>
                     </section>
                 </div>
@@ -193,24 +173,21 @@
                     <section id="facts">
                         <div class="container wow fadeIn">
                             <div class="section-header">
-                                <h3 class="section-title">Pengumuman Kelulusan<br> Student Day Fakultas Teknik 2023
+                                <h3 class="section-title">Pengumuman Kelulusan<br> Student Day Fakultas Teknik {{date('Y')}}
                                 </h3>
                             </div>
                             <div>
                                 <br>
                                 <p class="text-center wow fadeInUp">Pengumuman kelulusan Student Day Fakultas Teknik
-                                    2023
+                                    {{date('Y')}}
                                     dapat dilihat pada link berikut.
                                     <br>
                                 </p>
                             </div>
-
                             <p class="text-center">
                                 <a target="_blank" href="/downloadKelulusan" style="border-radius:22px;color:white;"
                                     class="btn btn-info">Download File Kelulusan</a>
                             </p>
-
-
                         </div>
                     </section>
                 </div>
@@ -224,7 +201,7 @@
                             <div>
                                 <div class="container my-3">
                                     <div class="text-center">
-                                        <img class="img-fluid mx-auto" src="img/logo-sd-2023.png"
+                                        <img class="img-fluid mx-auto" src="{{url('img/logo-sd-2023.png')}}"
                                             style="max-height:35vh;" alt="">
                                     </div>
                                 </div>
@@ -236,7 +213,6 @@
                         </div>
                     </section>
                 </div>
-
             </div>
     </main>
 
@@ -255,17 +231,13 @@
         </div>
     </div>
 
-
-    <!--==========================
-Contact Section
-============================-->
     <section id="contact">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-3 col-md-3">
                     <div class="info-pilihan">
                         <h5>Informasi Pilihan</h5>
-                        <a href="/">
+                        <a href="{{route('login')}}">
                             <h6>Student Day
                                 <script>
                                     document.write(new Date().getFullYear());
@@ -331,29 +303,24 @@ Contact Section
             </div>
 
             <div class="copyright">
-                &copy; 2021 <a href="/"><strong>SMFT</strong></a>. All Rights Reserved
+                &copy; {{date('Y')}} <a href="route('index')"><strong>SMFT</strong></a>. All Rights Reserved
             </div>
         </div>
     </footer>
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-migrate.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/easing.min.js"></script>
-    <script src="js/wow.min.js"></script>
+    <script src="{{url('js/jquery.min.js')}}"></script>
+    <script src="{{url('js/jquery-migrate.min.js')}}"></script>
+    <script src="{{url('js/popper.min.js')}}"></script>
+    <script src="{{url('js/bootstrap.min.js')}}"></script>
+    <script src="{{url('js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{url('js/easing.min.js')}}"></script>
+    <script src="{{url('js/wow.min.js')}}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>
-
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/hoverIntent.js"></script>
-    <script src="js/superfish.min.js"></script>
-    <script src="lib/magnific-popup/magnific-popup.min.js"></script>
-    <script src="js/main.js"></script>
-
-
+    <script src="{{url('js/waypoints.min.js')}}"></script>
+    <script src="{{url('js/hoverIntent.js')}}"></script>
+    <script src="{{url('js/superfish.min.js')}}"></script>
+    <script src="{{url('lib/magnific-popup/magnific-popup.min.js')}}"></script>
+    <script src="{{url('js/main.js')}}"></script>
 </body>
 
 </html>
