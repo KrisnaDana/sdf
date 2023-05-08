@@ -48,12 +48,4 @@ class GuestController extends Controller
         }
         return redirect()->route('view-login')->with(['error' => 'Sesi pendaftaran belum dibuka.']);
     }
-
-    public function logout(Request $request): RedirectResponse
-    {
-        Auth::guard('user')->logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect()->route('login');
-    }
 }

@@ -37,7 +37,7 @@ class Admin
             Auth::guard('user')->logout();
             $request->session()->invalidate();
             $request->session()->regenerateToken();
-            return redirect()->route('login')->with(['error' => 'Sesi pendaftaran telah berakhir.']);
+            return redirect()->route('view-login')->with(['error' => 'Sesi pendaftaran telah berakhir.']);
         }
 
         return redirect()->route('index');

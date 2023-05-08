@@ -32,16 +32,16 @@ Route::middleware(['throttle:60,1'])->group(function () {
 
     //User
     Route::middleware([User::class])->group(function () {
-        Route::get('/ganti-password', [UserBiodataController::class, 'gantiPassword'])->name('view-ganti-password');
-        Route::post('/ganti-password', [UserBiodataController::class, 'biodata'])->name('ganti-password');
-        Route::get('/biodata', [UserBiodataController::class, 'biodata'])->name('view-biodata');
-        Route::post('/biodata', [UserBiodataController::class, 'biodata'])->name('biodata');
         Route::get('/logout', [UserAuthController::class, 'logout'])->name('logout');
+        Route::get('/ganti-password', [UserAuthController::class, 'viewGantiPassword'])->name('view-ganti-password');
+        Route::post('/ganti-password', [UserAuthController::class, 'gantiPassword'])->name('ganti-password');
+        Route::get('/biodata', [UserBiodataController::class, 'viewBiodata'])->name('view-biodata');
+        Route::post('/biodata', [UserBiodataController::class, 'biodata'])->name('biodata');
     });
 
     //Admin
     Route::middleware([Admin::class])->group(function () {
-        Route::get('/dashboard', [AdminAuthController::class, 'dashboard'])->name('admin-view-dashboard');
         Route::get('/logout', [AdminAuthController::class, 'logout'])->name('admin-logout');
+        Route::get('/dashboard', [AdminAuthController::class, 'dashboard'])->name('admin-view-dashboard');
     });
 });

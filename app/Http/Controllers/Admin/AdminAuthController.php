@@ -25,7 +25,7 @@ class AdminAuthController extends Controller
             $request->session()->regenerate();
             return redirect()->intended(route('admin-view-dashboard'));
         }else{
-            return redirect()->route('login')->with(['error' => 'Username dan Password tidak sesuai.']);
+            return redirect()->route('admin-view-login')->with(['error' => 'Username dan Password tidak sesuai.']);
         }
     }
 
@@ -34,7 +34,7 @@ class AdminAuthController extends Controller
         Auth::guard('admin')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('login');
+        return redirect()->route('admin-view-login');
     }
 
     public function dashboard(): View
