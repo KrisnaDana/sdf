@@ -20,7 +20,7 @@ use App\Http\Controllers\Admin\AdminAuthController;
 |
 */
 
-Route::middleware(['throttle:60,1'])->group(function() {
+Route::middleware(['throttle:60,1'])->group(function () {
     //Guest
     Route::middleware([Guest::class])->group(function () {
         Route::get('/', [GuestController::class, 'index'])->name('index'); // Landing Page
