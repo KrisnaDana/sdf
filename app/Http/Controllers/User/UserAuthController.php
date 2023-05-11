@@ -27,4 +27,9 @@ class UserAuthController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('view-login');
     }
+
+    public function comingSoon(): View
+    {
+        return view('coming-soon');
+    }
 }

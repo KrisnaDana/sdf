@@ -41,4 +41,9 @@ class AdminAuthController extends Controller
     {
         return view('admin.dashboard');
     }
+
+    public function comingSoon(): View
+    {
+        return view('coming-soon');
+    }
 }
