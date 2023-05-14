@@ -32,51 +32,32 @@
                             @if(Auth::guard('admin')->user()->role == "Admin")
                             <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o purple_color"></i> <span>Dashboard</span></a></li>
                             <li>
-                                <a href="#tour" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-briefcase orange_color"></i> <span>Akun</span></a>
+                                <a href="#tour" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-wrench green_color"></i> <span>Akun</span></a>
                                 <ul class="collapse list-unstyled" id="tour">
-                                    <li><a href="{{route('admin-view-coming-soon')}}">> <span>Admin & Kesekre</span></a></li>
-                                    <li><a href="{{route('admin-view-coming-soon')}}">> <span>Mahasiswa</span></a></li>
+                                    <li><a href="{{route('admin-view-coming-soon')}}"> <span>Admin & Kesekre</span></a></li>
+                                    <li><a href="{{route('admin-view-coming-soon')}}"> <span>Mahasiswa</span></a></li>
                                 </ul>
                             </li>
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o purple_color"></i> <span>Program Studi & QR Code</span></a></li>
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o purple_color"></i> <span>Angkatan</span></a></li>
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o purple_color"></i> <span>Jalur Pendaftaran</span></a></li>
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o purple_color"></i> <span>Periode Pendaftaran</span></a></li>
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o purple_color"></i> <span>Pengumuman</span></a></li>
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o purple_color"></i> <span>Pendaftaran Mahasiswa</span></a></li>
+                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-university blue2_color"></i> <span>Program Studi & QR Code</span></a></li>
+                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-graduation-cap orange_color"></i> <span>Angkatan</span></a></li>
+                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-fire yellow_color"></i> <span>Jalur Pendaftaran</span></a></li>
+                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-flag red_color"></i> <span>Periode Pendaftaran</span></a></li>
+                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-calendar-o green_color"></i> <span>Pengumuman</span></a></li>
+                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-file blue1_color"></i> <span>Pendaftaran Mahasiswa</span></a></li>
                             @endif
                             @if(Auth::guard('admin')->user()->role == "Kesekre")
                             <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o purple_color"></i> <span>Dashboard</span></a></li>
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o purple_color"></i> <span>Pengumuman</span></a></li>
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o purple_color"></i> <span>Pendaftaran Mahasiswa</span></a></li>
+                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-calendar-o green_color"></i> <span>Pengumuman</span></a></li>
+                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-graduation-cap blue1_color"></i> <span>Pendaftaran Mahasiswa</span></a></li>
                             @endif
-                            <li>
-                                <a href="#tour" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-briefcase orange_color"></i> <span>Tour</span></a>
-                                <ul class="collapse list-unstyled" id="tour">
-                                    <li><a href="">> <span>Tour</span></a></li>
-                                    <li><a href="">> <span>Tour Category</span></a></li>
-                                    <li><a href="">> <span>Tour Destination</span></a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#fast_boat" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-anchor blue2_color"></i> <span>Fast Boat</span></a>
-                                <ul class="collapse list-unstyled" id="fast_boat">
-                                    <li><a href="{{route('admin-view-coming-soon')}}">> <span>Fast Boat</span></a></li>
-                                    <li><a href="{{route('admin-view-coming-soon')}}">> <span>Fast Boat Category</span></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-taxi yellow_color"></i> <span>Airport Transfer</span></a></li>
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-tags red_color"></i> <span>Discount</span></a></li>
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-envelope blue1_color"></i> <span>Discussion</span></a></li>
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-shopping-cart green_color"></i> <span>Transaction</span></a></li>
-
                             @if(Auth::guard('user')->check())
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o purple_color"></i> <span>Ganti Password</span></a></li>
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o purple_color"></i> <span>Pengumuman</span></a></li>
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o purple_color"></i> <span>Biodata</span></a></li>
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o purple_color"></i> <span>Organisasi</span></a></li>
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o purple_color"></i> <span>Prestasi</span></a></li>
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o purple_color"></i> <span>QR Code</span></a></li>
+                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-wrench purple_color"></i> <span>Ganti Password</span></a></li>
+                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-calendar-o green_color"></i> <span>Pengumuman</span></a></li>
+                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-graduation-cap blue1_color"></i> <span>Biodata</span></a></li>
+                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-group orange_color"></i> <span>Organisasi</span></a></li>
+                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-trophy yellow_color"></i> <span>Prestasi</span></a></li>
+                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-qrcode blue2_color"></i> <span>QR Code</span></a></li>
+                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-file red_color"></i> <span>Berkas</span></a></li>
                             @endif
                         </ul>
                     </header>
