@@ -15,17 +15,16 @@ return new class extends Migration
             $table->id();
             $table->string('nim')->unique();
             $table->string('password');
-            $table->string('password_no_encrypt')->nullable();
             $table->string('nama_lengkap');
             $table->foreignId('jalur_pendaftaran_id')->constrained('jalur_pendaftarans'); //data termasuk mahasiswa lama
             $table->foreignId('program_studi_id')->constrained('program_studis');
             $table->foreignId('angkatan_id')->constrained('angkatans');
-            $table->enum('ganti_password', ['Sudah', 'Belum'])->nullable();
+            $table->enum('ganti_password', ['Sudah', 'Belum'])->default("Belum");
             $table->string('file_profil')->nullable();
             $table->string('file_krm_lainnya')->nullable();
-            $table->enum('koordinator', ['Ya', 'Tidak'])->nullable();
+            $table->enum('koordinator', ['Ya', 'Tidak'])->default('Tidak');
             $table->string('nama_panggilan')->nullable();
-            $table->enum('status', ['Belum terdaftar', 'Terverifikasi'])->nullable();
+            $table->enum('status', ['Belum registrasi', 'Menunggu konfirmasi registrasi', 'Perbaikan registrasi', 'Teregistrasi'])->default('Belum registrasi');
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan'])->nullable();
             $table->enum('agama', ['Hindu', 'Islam', 'Budha', 'Konghucu', 'Kristen Protestan', 'Kristen Katolik', 'Kristen Advent', 'Penganut Kepercayaan'])->nullable();
             $table->enum('golongan_darah', ['A', 'B', 'AB', 'O'])->nullable();
