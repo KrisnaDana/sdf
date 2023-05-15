@@ -60,9 +60,9 @@
                                 <td>{{$loop->index+1}}</td>
                                 <td>{{$program_studi->nama}}</td>
                                 @if(!empty($program_studi->file_qr))
-                                    <td>Ya</td>
+                                    <td>Ada</td>
                                 @else
-                                    <td>Tidak</td>
+                                    <td>Tidak ada</td>
                                 @endif
                                 <td class="text-center">
                                     <a href="{{route('admin-read-program-studi', ['id' => $program_studi->id])}}"><button type="button" class="btn btn-primary"><i class="fa fa-book text-white"></i></button></a>
