@@ -8,6 +8,7 @@ use App\Http\Controllers\GuestController;
 use App\Http\Controllers\User\UserAuthController;
 use App\Http\Controllers\User\UserBiodataController;
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\AdminJalurPendaftaranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,5 +47,12 @@ Route::middleware(['throttle:60,1'])->group(function () {
         Route::get('/admin/coming-soon', [AdminAuthController::class, 'comingSoon'])->name('admin-view-coming-soon');
         Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin-logout');
         Route::get('/admin/dashboard', [AdminAuthController::class, 'dashboard'])->name('admin-view-dashboard');
+
+        Route::get('/admin/jalur-pendaftaran', [AdminJalurPendaftaranController::class, 'index'])->name('admin-view-jalur-pendaftaran');
+        Route::get('/admin/create-jalur-pendaftaran', [AdminJalurPendaftaranController::class, 'viewCreate'])->name('admin-view-create-jalur-pendaftaran');
+        Route::post('/admin/create-jalur-pendaftaran', [AdminJalurPendaftaranController::class, 'create'])->name('admin-create-jalur-pendaftaran');
+        Route::get('/admin/edit-jalur-pendaftaran/{id}', [AdminJalurPendaftaranController::class, 'viewEdit'])->name('admin-view-edit-jalur-pendaftaran');
+        Route::post('/admin/edit-jalur-pendaftaran/{id}', [AdminJalurPendaftaranController::class, 'edit'])->name('admin-edit-jalur-pendaftaran');
+        Route::post('/admin/delete-jalur-pendaftaran/{id}', [AdminJalurPendaftaranController::class, 'delete'])->name('admin-delete-jalur-pendaftaran');
     });
 });
