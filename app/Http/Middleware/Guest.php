@@ -30,7 +30,7 @@ class Guest
                     if($user->ganti_password == "Belum"){
                         return redirect()->intended(route('view-ganti-password'));
                     }
-                    return redirect()->intended(route('view-biodata'));
+                    return redirect()->intended(route('view-pengumuman'));
                 }
             }
             Auth::guard('user')->logout();

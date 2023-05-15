@@ -6,7 +6,8 @@ use App\Http\Middleware\User;
 use App\Http\Middleware\Guest;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\User\UserAuthController;
-use App\Http\Controllers\User\UserBiodataController;
+use App\Http\Controllers\User\UserPengumumanController;
+use App\Http\Controllers\User\UserRegistrasiController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminJalurPendaftaranController;
 
@@ -37,9 +38,9 @@ Route::middleware(['throttle:60,1'])->group(function () {
         Route::get('/logout', [UserAuthController::class, 'logout'])->name('logout');
         Route::get('/ganti-password', [UserAuthController::class, 'viewGantiPassword'])->name('view-ganti-password');
         Route::post('/ganti-password', [UserAuthController::class, 'gantiPassword'])->name('ganti-password');
-        Route::get('/pengumuman', [UserBiodataController::class, 'viewPengumuman'])->name('view-pengumuman');
-        Route::get('/biodata', [UserBiodataController::class, 'viewBiodata'])->name('view-biodata');
-        Route::post('/biodata', [UserBiodataController::class, 'biodata'])->name('biodata');
+        Route::get('/pengumuman', [UserPengumumanController::class, 'viewPengumuman'])->name('view-pengumuman');
+        Route::get('/registrasi', [UserRegistrasiController::class, 'viewRegistrasi'])->name('view-registrasi');
+        Route::post('/registrasi', [UserRegistrasiController::class, 'registrasi'])->name('registrasi');
     });
 
     //Admin

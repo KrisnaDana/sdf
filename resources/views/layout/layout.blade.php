@@ -69,17 +69,17 @@
                                 <li><a href="{{route('admin-view-jalur-pendaftaran')}}"><i class="fa fa-fire purple_color"></i> <span>Jalur Pendaftaran</span></a></li>
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-flag red_color"></i> <span>Periode Pendaftaran</span></a></li>
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-calendar-o green_color"></i> <span>Pengumuman</span></a></li>
-                                <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-graduation-cap blue1_color"></i> <span>Pendaftaran</span></a></li>
+                                <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-graduation-cap blue1_color"></i> <span>Registrasi</span></a></li>
                                 @endif
                                 @if(Auth::guard('admin')->user()->role == "Kesekre")
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o red_color"></i> <span>Dashboard</span></a></li>
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-calendar-o green_color"></i> <span>Pengumuman</span></a></li>
-                                <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-graduation-cap blue1_color"></i> <span>Pendaftaran</span></a></li>
+                                <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-graduation-cap blue1_color"></i> <span>Registrasi</span></a></li>
                                 @endif
                                 @if(Auth::guard('user')->check())
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-wrench purple_color"></i> <span>Ganti Password</span></a></li>
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-calendar-o green_color"></i> <span>Pengumuman</span></a></li>
-                                <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-graduation-cap blue1_color"></i> <span>Biodata</span></a></li>
+                                <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-graduation-cap blue1_color"></i> <span>Registrasi</span></a></li>
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-group orange_color"></i> <span>Organisasi</span></a></li>
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-trophy yellow_color"></i> <span>Prestasi</span></a></li>
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-qrcode blue2_color"></i> <span>QR Code</span></a></li>

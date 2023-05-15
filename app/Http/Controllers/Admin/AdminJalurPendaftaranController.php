@@ -22,7 +22,7 @@ class AdminJalurPendaftaranController extends Controller
 
     public function create(Request $request): RedirectResponse {
         $validated = $request->validate([
-            'nama' => 'string|required|min:1|max:50|unique:App\Models\JalurPendaftaran,nama' // allow alpha numeric spaces
+            'nama' => 'string|required|min:1|max:50|unique:App\Models\JalurPendaftaran,nama'
         ]);
         $jalur_pendaftaran = array(
             'nama' => $validated['nama']
@@ -38,7 +38,7 @@ class AdminJalurPendaftaranController extends Controller
 
     public function edit(Request $request, $id): RedirectResponse {
         $validated = $request->validate([
-            'nama' => 'string|required|min:1|max:50|unique:App\Models\JalurPendaftaran,nama,'.$id // allow alpha numeric spaces
+            'nama' => 'string|required|min:1|max:50|unique:App\Models\JalurPendaftaran,nama,'.$id
         ]);
         $jalur_pendaftaran = JalurPendaftaran::find($id);
         $jalur_pendaftaran->nama = $validated['nama'];
