@@ -65,7 +65,7 @@
                                         <li><a href="{{route('admin-view-coming-soon')}}"> <span>Mahasiswa</span></a></li>
                                     </ul>
                                 </li>
-                                <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-university yellow_color"></i> <span>Program Studi</span></a></li>
+                                <li><a href="{{route('admin-view-program-studi')}}"><i class="fa fa-university yellow_color"></i> <span>Program Studi</span></a></li>
                                 <li><a href="{{route('admin-view-jalur-pendaftaran')}}"><i class="fa fa-fire purple_color"></i> <span>Jalur Pendaftaran</span></a></li>
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-flag red_color"></i> <span>Periode Pendaftaran</span></a></li>
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-calendar-o green_color"></i> <span>Pengumuman</span></a></li>

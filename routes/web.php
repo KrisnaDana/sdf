@@ -10,6 +10,7 @@ use App\Http\Controllers\User\UserPengumumanController;
 use App\Http\Controllers\User\UserRegistrasiController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminJalurPendaftaranController;
+use App\Http\Controllers\Admin\AdminProgramStudiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,5 +56,14 @@ Route::middleware(['throttle:60,1'])->group(function () {
         Route::get('/admin/edit-jalur-pendaftaran/{id}', [AdminJalurPendaftaranController::class, 'viewEdit'])->name('admin-view-edit-jalur-pendaftaran');
         Route::post('/admin/edit-jalur-pendaftaran/{id}', [AdminJalurPendaftaranController::class, 'edit'])->name('admin-edit-jalur-pendaftaran');
         Route::post('/admin/delete-jalur-pendaftaran/{id}', [AdminJalurPendaftaranController::class, 'delete'])->name('admin-delete-jalur-pendaftaran');
+
+        Route::get('/admin/program-studi', [AdminProgramStudiController::class, 'index'])->name('admin-view-program-studi');
+        Route::get('/admin/program-studi/{id}', [AdminProgramStudiController::class, 'read'])->name('admin-read-program-studi');
+        Route::get('/admin/create-program-studi', [AdminProgramStudiController::class, 'viewCreate'])->name('admin-view-create-program-studi');
+        Route::post('/admin/create-program-studi', [AdminProgramStudiController::class, 'create'])->name('admin-create-program-studi');
+        Route::get('/admin/edit-program-studi/{id}', [AdminProgramStudiController::class, 'viewEdit'])->name('admin-view-edit-program-studi');
+        Route::post('/admin/edit-program-studi/{id}', [AdminProgramStudiController::class, 'edit'])->name('admin-edit-program-studi');
+        Route::get('/admin/delete-program-studi-qr-code/{id}', [AdminProgramStudiController::class, 'deleteQrCode'])->name('admin-delete-program-studi-qr-code');
+        Route::post('/admin/delete-program-studi/{id}', [AdminProgramStudiController::class, 'delete'])->name('admin-delete-program-studi');
     });
 });

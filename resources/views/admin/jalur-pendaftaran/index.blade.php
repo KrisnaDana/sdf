@@ -56,8 +56,8 @@
                         <tbody>
                             @foreach($jalur_pendaftarans as $jalur_pendaftaran)
                             <tr>
-                                <td data-toggle="modal">{{$loop->index+1}}</td>
-                                <td data-toggle="modal">{{$jalur_pendaftaran->nama}}</td>
+                                <td>{{$loop->index+1}}</td>
+                                <td>{{$jalur_pendaftaran->nama}}</td>
                                 <td class="text-center">
                                     <a href="{{route('admin-view-edit-jalur-pendaftaran', ['id' => $jalur_pendaftaran->id])}}"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square text-white"></i></button></a>
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-modal{{$loop->index+1}}"><i class="fa fa-trash-o text-white"></i></button>

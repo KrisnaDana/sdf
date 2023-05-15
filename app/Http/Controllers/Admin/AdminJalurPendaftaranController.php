@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\JalurPendaftaran;
 use App\Models\User;
+use App\Models\PeriodePendaftaran;
 
 class AdminJalurPendaftaranController extends Controller
 {
@@ -51,6 +52,12 @@ class AdminJalurPendaftaranController extends Controller
         foreach($users as $user) {
             if($user->jalur_pendaftaran_id == $id) {
                 return redirect()->route('admin-view-jalur-pendaftaran')->with(["toast" => ["type" => "danger", "message" => "Terdapat mahasiswa pada jalur pendaftaran ini."]]);
+            }
+        }
+        $periode_pendaftarans = PeriodePendaftaran::where('jalur_pendaftaran_id', $id)->get();
+        foreach($periode_pendaftarans as $periode_pendaftaran) {
+            if($$periode_pendaftaran->jalur_pendaftaran_id == $id) {
+                return redirect()->route('admin-view-jalur-pendaftaran')->with(["toast" => ["type" => "danger", "message" => "Jalur pendaftaran ini terdapat pada periode pendaftaran."]]);
             }
         }
         $jalur_pendaftaran = JalurPendaftaran::find($id);
