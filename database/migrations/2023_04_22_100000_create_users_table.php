@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama_lengkap');
             $table->foreignId('jalur_pendaftaran_id')->constrained('jalur_pendaftarans'); //data termasuk mahasiswa lama
             $table->foreignId('program_studi_id')->constrained('program_studis');
-            $table->foreignId('angkatan_id')->constrained('angkatans');
+            $table->year('angkatan');
             $table->enum('ganti_password', ['Sudah', 'Belum'])->default("Belum");
             $table->string('file_profil')->nullable();
             $table->string('file_krm_lainnya')->nullable();

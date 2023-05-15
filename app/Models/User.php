@@ -48,10 +48,6 @@ class User extends Authenticatable
         return $this->belongsTo(JalurPendaftaran::class);
     }
 
-    public function angkatan(): BelongsTo {
-        return $this->belongsTo(Angkatan::class);
-    }
-
     public function organisasis(): HasMany {
         return $this->hasMany(Organisasi::class);
     }

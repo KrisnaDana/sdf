@@ -30,23 +30,22 @@
                         @endif
                         <ul class="list-unstyled components">
                             @if(Auth::guard('admin')->user()->role == "Admin")
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o purple_color"></i> <span>Dashboard</span></a></li>
+                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o red_color"></i> <span>Dashboard</span></a></li>
                             <li>
-                                <a href="#tour" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-wrench green_color"></i> <span>Akun</span></a>
+                                <a href="#tour" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-wrench green_color"></i> <span>Kelola Akun</span></a>
                                 <ul class="collapse list-unstyled" id="tour">
                                     <li><a href="{{route('admin-view-coming-soon')}}"> <span>Admin & Kesekre</span></a></li>
                                     <li><a href="{{route('admin-view-coming-soon')}}"> <span>Mahasiswa</span></a></li>
                                 </ul>
                             </li>
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-university blue2_color"></i> <span>Program Studi & QR Code</span></a></li>
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-graduation-cap orange_color"></i> <span>Angkatan</span></a></li>
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-fire yellow_color"></i> <span>Jalur Pendaftaran</span></a></li>
+                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-university yellow_color"></i> <span>Program Studi & QR Code</span></a></li>
+                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-fire purple_color"></i> <span>Jalur Pendaftaran</span></a></li>
                             <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-flag red_color"></i> <span>Periode Pendaftaran</span></a></li>
                             <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-calendar-o green_color"></i> <span>Pengumuman</span></a></li>
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-file blue1_color"></i> <span>Pendaftaran Mahasiswa</span></a></li>
+                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-graduation-cap blue1_color"></i> <span>Pendaftaran Mahasiswa</span></a></li>
                             @endif
                             @if(Auth::guard('admin')->user()->role == "Kesekre")
-                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o purple_color"></i> <span>Dashboard</span></a></li>
+                            <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o red_color"></i> <span>Dashboard</span></a></li>
                             <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-calendar-o green_color"></i> <span>Pengumuman</span></a></li>
                             <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-graduation-cap blue1_color"></i> <span>Pendaftaran Mahasiswa</span></a></li>
                             @endif
