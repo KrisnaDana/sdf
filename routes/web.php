@@ -11,6 +11,9 @@ use App\Http\Controllers\User\UserRegistrasiController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminJalurPendaftaranController;
 use App\Http\Controllers\Admin\AdminProgramStudiController;
+use App\Http\Controllers\Admin\AdminAkunAdminController;
+use App\Http\Controllers\Admin\AdminAkunMahasiswaController;
+use App\Http\Controllers\Admin\AdminPeriodePendaftaranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +32,8 @@ Route::middleware(['throttle:60,1'])->group(function () {
         Route::get('/', [GuestController::class, 'index'])->name('index'); // Landing Page
         Route::get('/login', [GuestController::class, 'viewLogin'])->name('view-login');
         Route::post('/login', [GuestController::class, 'login'])->name('login');
-        Route::get('/secret-login', [AdminAuthController::class, 'viewLogin'])->name('admin-view-login');
-        Route::post('/secret-login', [AdminAuthController::class, 'login'])->name('admin-login');
+        Route::get('/admin-login', [AdminAuthController::class, 'viewLogin'])->name('admin-view-login');
+        Route::post('/admin-login', [AdminAuthController::class, 'login'])->name('admin-login');
     });
 
     //User
@@ -65,5 +68,27 @@ Route::middleware(['throttle:60,1'])->group(function () {
         Route::post('/admin/edit-program-studi/{id}', [AdminProgramStudiController::class, 'edit'])->name('admin-edit-program-studi');
         Route::get('/admin/delete-program-studi-qr-code/{id}', [AdminProgramStudiController::class, 'deleteQrCode'])->name('admin-delete-program-studi-qr-code');
         Route::post('/admin/delete-program-studi/{id}', [AdminProgramStudiController::class, 'delete'])->name('admin-delete-program-studi');
+
+        Route::get('/admin/periode-pendaftaran', [AdminPeriodePendaftaranController::class, 'index'])->name('admin-view-periode-pendaftaran');
+        Route::get('/admin/create-periode-pendaftaran', [AdminPeriodePendaftaranController::class, 'viewCreate'])->name('admin-view-create-periode-pendaftaran');
+        Route::post('/admin/create-periode-pendaftaran', [AdminPeriodePendaftaranController::class, 'create'])->name('admin-create-periode-pendaftaran');
+        Route::get('/admin/edit-periode-pendaftaran/{id}', [AdminPeriodePendaftaranController::class, 'viewEdit'])->name('admin-view-edit-periode-pendaftaran');
+        Route::post('/admin/edit-periode-pendaftaran/{id}', [AdminPeriodePendaftaranController::class, 'edit'])->name('admin-edit-periode-pendaftaran');
+        Route::post('/admin/delete-periode-pendaftaran/{id}', [AdminPeriodePendaftaranController::class, 'delete'])->name('admin-delete-periode-pendaftaran');
+
+        Route::get('/admin/akun-admin', [AdminAkunAdminController::class, 'index'])->name('admin-view-akun-admin');
+        Route::get('/admin/create-akun-admin', [AdminAkunAdminController::class, 'viewCreate'])->name('admin-view-create-akun-admin');
+        Route::post('/admin/create-akun-admin', [AdminAkunAdminController::class, 'create'])->name('admin-create-akun-admin');
+        Route::get('/admin/edit-akun-admin/{id}', [AdminAkunAdminController::class, 'viewEdit'])->name('admin-view-edit-akun-admin');
+        Route::post('/admin/edit-akun-admin/{id}', [AdminAkunAdminController::class, 'edit'])->name('admin-edit-akun-admin');
+        Route::post('/admin/delete-akun-admin/{id}', [AdminAkunAdminController::class, 'delete'])->name('admin-delete-akun-admin');
+
+        Route::get('/admin/akun-mahasiswa', [AdminAkunMahasiswaController::class, 'index'])->name('admin-view-akun-mahasiswa');
+        Route::get('/admin/akun-mahasiswa/{id}', [AdminAkunMahasiswaController::class, 'read'])->name('admin-read-akun-mahasiswa');
+        Route::get('/admin/create-akun-mahasiswa', [AdminAkunMahasiswaController::class, 'viewCreate'])->name('admin-view-create-akun-mahasiswa');
+        Route::post('/admin/create-akun-mahasiswa', [AdminAkunMahasiswaController::class, 'create'])->name('admin-create-akun-mahasiswa');
+        Route::get('/admin/edit-akun-mahasiswa/{id}', [AdminAkunMahasiswaController::class, 'viewEdit'])->name('admin-view-edit-akun-mahasiswa');
+        Route::post('/admin/edit-akun-mahasiswa/{id}', [AdminAkunMahasiswaController::class, 'edit'])->name('admin-edit-akun-mahasiswa');
+        Route::post('/admin/delete-akun-mahasiswa/{id}', [AdminAkunMahasiswaController::class, 'delete'])->name('admin-delete-akun-mahasiswa');
     });
 });
