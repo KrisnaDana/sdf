@@ -28,13 +28,13 @@
                             <input type="text" class="form-control" disabled readonly value="Isi data program studi terlebih dahulu">
                         @else
                             <select class="form-control" name="program_studi_id">
-                                @foreach($program_studis as $program_studi)
-                                    @if($program_studi->id == $periode_pendaftaran->program_studi_id)
-                                        <option selected value="{{$program_studi->id}}">{{$program_studi->nama}}</option>
-                                    @else
-                                        <option value="{{$program_studi->id}}">{{$program_studi->nama}}</option>
-                                    @endif
-                                @endforeach
+                            @foreach($program_studis as $program_studi)
+                                @if(old('program_studi_id') == $program_studi->id || (empty(old('program_studi_id')) && $periode_pendaftaran->program_studi_id == $program_studi->id))
+                                    <option value="{{$program_studi->id}}" selected>{{$program_studi->nama}}</option>
+                                @else
+                                    <option value="{{$program_studi->id}}">{{$program_studi->nama}}</option>
+                                @endif
+                            @endforeach
                             </select>
                         @endif
                     </div>
@@ -45,7 +45,7 @@
                         @else
                             <select class="form-control" name="jalur_pendaftaran_id">
                                 @foreach($jalur_pendaftarans as $jalur_pendaftaran)
-                                    @if($jalur_pendaftaran->id == $periode_pendaftaran->jalur_pendaftaran_id)
+                                    @if(old('jalur_pendaftaran_id') == $jalur_pendaftaran->id || $jalur_pendaftaran->id == $periode_pendaftaran->jalur_pendaftaran_id)
                                         <option selected value="{{$jalur_pendaftaran->id}}">{{$jalur_pendaftaran->nama}}</option>
                                     @else
                                         <option value="{{$jalur_pendaftaran->id}}">{{$jalur_pendaftaran->nama}}</option>

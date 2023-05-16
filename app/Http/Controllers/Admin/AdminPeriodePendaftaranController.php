@@ -14,7 +14,7 @@ use Illuminate\Support\Carbon;
 class AdminPeriodePendaftaranController extends Controller
 {
     public function index(): View {
-        $periode_pendaftarans = PeriodePendaftaran::orderBy('mulai')->get();
+        $periode_pendaftarans = PeriodePendaftaran::with(['program_studi', 'jalur_pendaftaran'])->orderBy('mulai')->get();
         return view('admin.periode-pendaftaran.index', compact('periode_pendaftarans'));
     }
 

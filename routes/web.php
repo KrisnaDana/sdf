@@ -89,6 +89,7 @@ Route::middleware(['throttle:60,1'])->group(function () {
         Route::post('/admin/create-akun-mahasiswa', [AdminAkunMahasiswaController::class, 'create'])->name('admin-create-akun-mahasiswa');
         Route::get('/admin/edit-akun-mahasiswa/{id}', [AdminAkunMahasiswaController::class, 'viewEdit'])->name('admin-view-edit-akun-mahasiswa');
         Route::post('/admin/edit-akun-mahasiswa/{id}', [AdminAkunMahasiswaController::class, 'edit'])->name('admin-edit-akun-mahasiswa');
+        Route::get('/admin/reset-password-akun-mahasiswa/{id}', [AdminAkunMahasiswaController::class, 'resetPassword'])->name('admin-reset-password-akun-mahasiswa');
         Route::post('/admin/delete-akun-mahasiswa/{id}', [AdminAkunMahasiswaController::class, 'delete'])->name('admin-delete-akun-mahasiswa');
     });
 });

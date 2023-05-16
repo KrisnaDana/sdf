@@ -28,9 +28,11 @@
                             <input type="text" class="form-control" disabled readonly value="Isi data program studi terlebih dahulu">
                         @else
                             <select class="form-control" name="program_studi_id">
-                                @foreach($program_studis as $program_studi)
+                                @if(old('program_studi_id') == $program_studi->id)
+                                    <option value="{{$program_studi->id}}" selected>{{$program_studi->nama}}</option>
+                                @else
                                     <option value="{{$program_studi->id}}">{{$program_studi->nama}}</option>
-                                @endforeach
+                                @endif
                             </select>
                         @endif
                     </div>
@@ -40,9 +42,11 @@
                             <input type="text" class="form-control" disabled readonly value="Isi data jalur pendaftaran terlebih dahulu">
                         @else
                             <select class="form-control" name="jalur_pendaftaran_id">
-                                @foreach($jalur_pendaftarans as $jalur_pendaftaran)
+                                @if(old('jalur_pendaftaran_id') == $jalur_pendaftaran->id)
+                                    <option value="{{$jalur_pendaftaran->id}}" selected>{{$jalur_pendaftaran->nama}}</option>
+                                @else
                                     <option value="{{$jalur_pendaftaran->id}}">{{$jalur_pendaftaran->nama}}</option>
-                                @endforeach
+                                @endif
                             </select>
                         @endif
                     </div>

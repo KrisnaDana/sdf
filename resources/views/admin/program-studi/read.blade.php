@@ -6,7 +6,7 @@
         <div class="page_title">
         <div class="row">
                 <div class="col" style="position: absolute; top: 50%; transform: translateY(-50%);">
-                    <h2>Ubah Program Studi</h2>
+                    <h2>Program Studi</h2>
                 </div>
                 <div class="col">
                     <a href="{{route('admin-view-program-studi')}}"><button type="button" class="btn cur-p btn-lg btn-danger" style="float: right;">Kembali</button></a>
@@ -21,7 +21,7 @@
             <div class="table_section padding_infor_info">
                 <div class="mb-3">
                     <label class="form-label">Nama</label>
-                    <input type="text" class="form-control" name="nama" value="{{$program_studi->nama}}" spellcheck="disabled" disabled readonly>
+                    <input type="text" class="form-control" value="{{$program_studi->nama}}" spellcheck="disabled" disabled readonly>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">QR Code</label>
