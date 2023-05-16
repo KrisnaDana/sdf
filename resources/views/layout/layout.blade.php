@@ -61,7 +61,7 @@
                                 <li>
                                     <a href="#tour" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-wrench green_color"></i> <span>Kelola Akun</span></a>
                                     <ul class="collapse list-unstyled" id="tour">
-                                        <li><a href="{{route('admin-view-coming-soon')}}"> <span>Admin</span></a></li>
+                                        <li><a href="{{route('admin-view-akun-admin')}}"> <span>Admin</span></a></li>
                                         <li><a href="{{route('admin-view-coming-soon')}}"> <span>Mahasiswa</span></a></li>
                                     </ul>
                                 </li>
