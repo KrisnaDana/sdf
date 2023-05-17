@@ -5,7 +5,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>{{'SMFT - Student Day '.date('Y')}}</title>
-      <link rel="icon" href="{{url('/image/default/balinusaholiday.png')}}" type="image/png" />
+      <link rel="icon" href="{{url('/img/logo-sd-2023.png')}}" type="image/png" />
       <link rel="stylesheet" href="{{url('/pluto/css/bootstrap.min.css')}}" />
       <link rel="stylesheet" href="{{url('/pluto/style.css')}}" />
       <link rel="stylesheet" href="{{url('/pluto/css/responsive.css')}}" />
@@ -68,22 +68,22 @@
                                 <li><a href="{{route('admin-view-program-studi')}}"><i class="fa fa-university yellow_color"></i> <span>Program Studi</span></a></li>
                                 <li><a href="{{route('admin-view-jalur-pendaftaran')}}"><i class="fa fa-fire purple_color"></i> <span>Jalur Pendaftaran</span></a></li>
                                 <li><a href="{{route('admin-view-periode-pendaftaran')}}"><i class="fa fa-flag red_color"></i> <span>Periode Pendaftaran</span></a></li>
-                                <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-calendar-o green_color"></i> <span>Pengumuman</span></a></li>
+                                <li><a href="{{route('admin-view-pengumuman')}}"><i class="fa fa-calendar-o green_color"></i> <span>Pengumuman</span></a></li>
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-graduation-cap blue1_color"></i> <span>Registrasi</span></a></li>
                                 @endif
                                 @if(Auth::guard('admin')->user()->role == "Kesekre")
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o red_color"></i> <span>Dashboard</span></a></li>
-                                <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-calendar-o green_color"></i> <span>Pengumuman</span></a></li>
+                                <li><a href="{{route('admin-view-pengumuman')}}"><i class="fa fa-calendar-o green_color"></i> <span>Pengumuman</span></a></li>
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-graduation-cap blue1_color"></i> <span>Registrasi</span></a></li>
                                 @endif
                                 @if(Auth::guard('user')->check())
-                                <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-wrench purple_color"></i> <span>Ganti Password</span></a></li>
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-calendar-o green_color"></i> <span>Pengumuman</span></a></li>
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-graduation-cap blue1_color"></i> <span>Registrasi</span></a></li>
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-group orange_color"></i> <span>Organisasi</span></a></li>
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-trophy yellow_color"></i> <span>Prestasi</span></a></li>
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-qrcode blue2_color"></i> <span>QR Code</span></a></li>
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-file red_color"></i> <span>Berkas</span></a></li>
+                                <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-wrench purple_color"></i> <span>Ganti Password</span></a></li>
                                 @endif
                             </ul>
                         </header>

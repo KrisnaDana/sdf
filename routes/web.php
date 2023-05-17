@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\AdminProgramStudiController;
 use App\Http\Controllers\Admin\AdminAkunAdminController;
 use App\Http\Controllers\Admin\AdminAkunMahasiswaController;
 use App\Http\Controllers\Admin\AdminPeriodePendaftaranController;
+use App\Http\Controllers\Admin\AdminPengumumanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,5 +92,14 @@ Route::middleware(['throttle:60,1'])->group(function () {
         Route::post('/admin/edit-akun-mahasiswa/{id}', [AdminAkunMahasiswaController::class, 'edit'])->name('admin-edit-akun-mahasiswa');
         Route::get('/admin/reset-password-akun-mahasiswa/{id}', [AdminAkunMahasiswaController::class, 'resetPassword'])->name('admin-reset-password-akun-mahasiswa');
         Route::post('/admin/delete-akun-mahasiswa/{id}', [AdminAkunMahasiswaController::class, 'delete'])->name('admin-delete-akun-mahasiswa');
+
+        Route::get('/admin/pengumuman', [AdminPengumumanController::class, 'index'])->name('admin-view-pengumuman');
+        Route::get('/admin/pengumuman/{id}', [AdminPengumumanController::class, 'read'])->name('admin-read-pengumuman');
+        Route::get('/admin/create-pengumuman', [AdminPengumumanController::class, 'viewCreate'])->name('admin-view-create-pengumuman');
+        Route::post('/admin/create-pengumuman', [AdminPengumumanController::class, 'create'])->name('admin-create-pengumuman');
+        Route::get('/admin/edit-pengumuman/{id}', [AdminPengumumanController::class, 'viewEdit'])->name('admin-view-edit-pengumuman');
+        Route::post('/admin/edit-pengumuman/{id}', [AdminPengumumanController::class, 'edit'])->name('admin-edit-pengumuman');
+        Route::get('/admin/delete-pengumuman-gambar/{id}', [AdminPengumumanController::class, 'deleteGambar'])->name('admin-delete-pengumuman-gambar');
+        Route::post('/admin/delete-pengumuman/{id}', [AdminPengumumanController::class, 'delete'])->name('admin-delete-pengumuman');
     });
 });
