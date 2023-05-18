@@ -39,7 +39,7 @@ class AdminPengumumanController extends Controller
         }
         if(!empty($validated['file_gambar'])){
             $file_gambar = $request->file('file_gambar');
-            $filename = 'pengumuman-'. time() . $file_gambar->getClientOriginalExtension();
+            $filename = 'pengumuman-'. time() . "." . $file_gambar->getClientOriginalExtension();
             $path = public_path('/img/pengumuman');
             $file_gambar->move($path, $filename);
             $pengumuman['file_gambar'] = $filename;
@@ -69,10 +69,10 @@ class AdminPengumumanController extends Controller
         if(!empty($validated['file_gambar'])){
             File::delete(public_path('/img/file_gambar/').$pengumuman->file_gambar);
             $file_gambar = $request->file('file_gambar');
-            $filename = 'pengumuman-'. time() . $file_gambar->getClientOriginalExtension();
+            $filename = 'pengumuman-'. time() . "." . $file_gambar->getClientOriginalExtension();
             $path = public_path('/img/pengumuman');
             $file_gambar->move($path, $filename);
-            $pengumuman['file_gambar'] = $filename;
+            $pengumuman->file_gambar = $filename;
         }
         $pengumuman->save();
         return redirect()->route('admin-view-edit-pengumuman', ['id' => $id])->with(["toast" => ["type" => "success", "message" => "Berhasil mengubah pengumuman."]]);

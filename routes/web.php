@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\AdminAkunAdminController;
 use App\Http\Controllers\Admin\AdminAkunMahasiswaController;
 use App\Http\Controllers\Admin\AdminPeriodePendaftaranController;
 use App\Http\Controllers\Admin\AdminPengumumanController;
+use App\Http\Controllers\Admin\AdminBerkasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,5 +102,13 @@ Route::middleware(['throttle:60,1'])->group(function () {
         Route::post('/admin/edit-pengumuman/{id}', [AdminPengumumanController::class, 'edit'])->name('admin-edit-pengumuman');
         Route::get('/admin/delete-pengumuman-gambar/{id}', [AdminPengumumanController::class, 'deleteGambar'])->name('admin-delete-pengumuman-gambar');
         Route::post('/admin/delete-pengumuman/{id}', [AdminPengumumanController::class, 'delete'])->name('admin-delete-pengumuman');
+
+        Route::get('/admin/berkas', [AdminBerkasController::class, 'index'])->name('admin-view-berkas');
+        Route::get('/admin/berkas/{id}', [AdminBerkasController::class, 'download'])->name('admin-download-berkas');
+        Route::get('/admin/create-berkas', [AdminBerkasController::class, 'viewCreate'])->name('admin-view-create-berkas');
+        Route::post('/admin/create-berkas', [AdminBerkasController::class, 'create'])->name('admin-create-berkas');
+        Route::get('/admin/edit-berkas/{id}', [AdminBerkasController::class, 'viewEdit'])->name('admin-view-edit-berkas');
+        Route::post('/admin/edit-berkas/{id}', [AdminBerkasController::class, 'edit'])->name('admin-edit-berkas');
+        Route::post('/admin/delete-berkas/{id}', [AdminBerkasController::class, 'delete'])->name('admin-delete-berkas');
     });
 });
