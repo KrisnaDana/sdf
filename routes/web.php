@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\Admin;
-use App\Http\Middleware\User;
 use App\Http\Middleware\Guest;
+use App\Http\Middleware\Mahasiswa;
+use App\Http\Middleware\MahasiswaSudahGantiPassword;
+use App\Http\Middleware\Admin;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\User\UserAuthController;
 use App\Http\Controllers\User\UserPengumumanController;
@@ -38,12 +39,16 @@ Route::middleware(['throttle:60,1'])->group(function () {
         Route::post('/admin-login', [AdminAuthController::class, 'login'])->name('admin-login');
     });
 
-    //User
-    Route::middleware([User::class])->group(function () {
-        Route::get('/coming-soon', [UserAuthController::class, 'comingSoon'])->name('view-coming-soon');
+    //Mahasiswa
+    Route::middleware([Mahasiswa::class])->group(function () {
         Route::get('/logout', [UserAuthController::class, 'logout'])->name('logout');
         Route::get('/ganti-password', [UserAuthController::class, 'viewGantiPassword'])->name('view-ganti-password');
         Route::post('/ganti-password', [UserAuthController::class, 'gantiPassword'])->name('ganti-password');
+    });
+
+    //Mahasiswa Sudah Ganti Password
+    Route::middleware([MahasiswaSudahGantiPassword::class])->group(function () {
+        Route::get('/coming-soon', [UserAuthController::class, 'comingSoon'])->name('view-coming-soon');
         Route::get('/pengumuman', [UserPengumumanController::class, 'viewPengumuman'])->name('view-pengumuman');
         Route::get('/registrasi', [UserRegistrasiController::class, 'viewRegistrasi'])->name('view-registrasi');
         Route::post('/registrasi', [UserRegistrasiController::class, 'registrasi'])->name('registrasi');

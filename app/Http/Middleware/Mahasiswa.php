@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\PeriodePendaftaran;
 use Illuminate\Support\Carbon;
 
-class User
+class Mahasiswa
 {
     /**
      * Handle an incoming request.
@@ -24,9 +24,6 @@ class User
             $now = Carbon::now()->format('Y-m-d H:i:s');
             foreach($periode_pendaftaran as $p){
                 if($user->program_studi_id == $p->program_studi_id && $user->jalur_pendaftaran_id == $p->jalur_pendaftaran_id && $p->mulai <= $now && $now <= $p->berakhir){
-                    if($user->ganti_password == "Belum"){
-                        return redirect()->intended(route('view-ganti-password'));
-                    }
                     return $next($request);
                 }
             }
@@ -37,7 +34,7 @@ class User
         }
 
         if(Auth::guard('admin')->check()){
-            return redirect()->intended(route('admin-view-dashboard'));
+            return redirect()->route('admin-view-dashboard');
         }
 
         return redirect()->route('index');

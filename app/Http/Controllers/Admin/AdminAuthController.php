@@ -23,7 +23,7 @@ class AdminAuthController extends Controller
         ]);
         if(Auth::guard('admin')->attempt($validated)){
             $request->session()->regenerate();
-            return redirect()->intended(route('admin-view-dashboard'));
+            return redirect()->route('admin-view-dashboard');
         }else{
             return redirect()->route('admin-view-login')->with(['error' => 'Username dan Password tidak sesuai.']);
         }
