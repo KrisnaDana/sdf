@@ -85,7 +85,7 @@
                                 <li><a href="{{route('view-coming-soon')}}"><i class="fa fa-trophy yellow_color"></i> <span>Prestasi</span></a></li>
                                 <li><a href="{{route('view-coming-soon')}}"><i class="fa fa-qrcode blue2_color"></i> <span>QR Code</span></a></li>
                                 <li><a href="{{route('view-coming-soon')}}"><i class="fa fa-file red_color"></i> <span>Berkas</span></a></li>
-                                <li><a href="{{route('view-coming-soon')}}"><i class="fa fa-wrench purple_color"></i> <span>Ganti Password</span></a></li>
+                                <li><a href="{{route('view-ganti-password')}}"><i class="fa fa-wrench purple_color"></i> <span>Ganti Password</span></a></li>
                                 @endif
                             </ul>
                         </header>
