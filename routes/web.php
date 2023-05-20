@@ -150,5 +150,11 @@ Route::middleware(['throttle:60,1'])->group(function () {
         Route::get('/admin/edit-berkas/{id}', [AdminBerkasController::class, 'viewEdit'])->name('admin-view-edit-berkas');
         Route::post('/admin/edit-berkas/{id}', [AdminBerkasController::class, 'edit'])->name('admin-edit-berkas');
         Route::post('/admin/delete-berkas/{id}', [AdminBerkasController::class, 'delete'])->name('admin-delete-berkas');
+
+        Route::get('/admin/registrasi', [AdminRegistrasiController::class, 'index'])->name('admin-view-registrasi');
+        Route::get('/admin/registrasi/{id}', [AdminRegistrasiController::class, 'read'])->name('admin-read-registrasi');
+        Route::get('/admin/download-prestasi/{id}', [AdminRegistrasiController::class, 'downloadPrestasi'])->name('admin-download-prestasi-registrasi');
+        Route::post('/admin/note-registrasi/{id}', [AdminRegistrasiController::class, 'note'])->name('admin-note-registrasi');
+        Route::post('/admin/konfirmasi-registrasi/{id}', [AdminRegistrasiController::class, 'konfirmasi'])->name('admin-konfirmasi-registrasi');
     });
 });
