@@ -9,6 +9,10 @@ use App\Http\Controllers\GuestController;
 use App\Http\Controllers\User\UserAuthController;
 use App\Http\Controllers\User\UserPengumumanController;
 use App\Http\Controllers\User\UserRegistrasiController;
+use App\Http\Controllers\User\UserOrganisasiController;
+use App\Http\Controllers\User\UserPrestasiController;
+use App\Http\Controllers\User\UserQrcodeController;
+use App\Http\Controllers\User\UserBerkasController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminJalurPendaftaranController;
 use App\Http\Controllers\Admin\AdminProgramStudiController;
@@ -33,8 +37,10 @@ Route::middleware(['throttle:60,1'])->group(function () {
     //Guest
     Route::middleware([Guest::class])->group(function () {
         Route::get('/', [GuestController::class, 'index'])->name('index'); // Landing Page
+        
         Route::get('/login', [GuestController::class, 'viewLogin'])->name('view-login');
         Route::post('/login', [GuestController::class, 'login'])->name('login');
+        
         Route::get('/admin-login', [AdminAuthController::class, 'viewLogin'])->name('admin-view-login');
         Route::post('/admin-login', [AdminAuthController::class, 'login'])->name('admin-login');
     });
@@ -42,6 +48,7 @@ Route::middleware(['throttle:60,1'])->group(function () {
     //Mahasiswa
     Route::middleware([Mahasiswa::class])->group(function () {
         Route::get('/logout', [UserAuthController::class, 'logout'])->name('logout');
+        
         Route::get('/ganti-password', [UserAuthController::class, 'viewGantiPassword'])->name('view-ganti-password');
         Route::post('/ganti-password', [UserAuthController::class, 'gantiPassword'])->name('ganti-password');
     });
@@ -49,15 +56,39 @@ Route::middleware(['throttle:60,1'])->group(function () {
     //Mahasiswa Sudah Ganti Password
     Route::middleware([MahasiswaSudahGantiPassword::class])->group(function () {
         Route::get('/coming-soon', [UserAuthController::class, 'comingSoon'])->name('view-coming-soon');
+        
         Route::get('/pengumuman', [UserPengumumanController::class, 'viewPengumuman'])->name('view-pengumuman');
+        
         Route::get('/registrasi', [UserRegistrasiController::class, 'viewRegistrasi'])->name('view-registrasi');
         Route::post('/registrasi', [UserRegistrasiController::class, 'registrasi'])->name('registrasi');
+
+        Route::get('/organisasi', [UserOrganisasiController::class, 'index'])->name('view-organisasi');
+        Route::get('/create-organisasi', [UserOrganisasiController::class, 'viewCreate'])->name('view-create-organisasi');
+        Route::post('/create-organisasi', [UserOrganisasiController::class, 'create'])->name('create-organisasi');
+        Route::get('/edit-organisasi/{id}', [UserOrganisasiController::class, 'viewEdit'])->name('view-edit-organisasi');
+        Route::post('/edit-organisasi/{id}', [UserOrganisasiController::class, 'edit'])->name('edit-organisasi');
+        Route::post('/delete-organisasi/{id}', [UserOrganisasiController::class, 'delete'])->name('delete-organisasi');
+
+        Route::get('/prestasi', [UserPrestasiController::class, 'index'])->name('view-prestasi');
+        Route::get('/prestasi/{id}', [AdminPrestasiController::class, 'download'])->name('download-prestasi');
+        Route::get('/create-prestasi', [UserPrestasiController::class, 'viewCreate'])->name('view-create-prestasi');
+        Route::post('/create-prestasi', [UserPrestasiController::class, 'create'])->name('create-prestasi');
+        Route::get('/edit-prestasi/{id}', [UserPrestasiController::class, 'viewEdit'])->name('view-edit-prestasi');
+        Route::post('/edit-prestasi/{id}', [UserPrestasiController::class, 'edit'])->name('edit-prestasi');
+        Route::post('/delete-prestasi/{id}', [UserPrestasiController::class, 'delete'])->name('delete-prestasi');
+
+        Route::get('/qrcode', [UserQrcodeController::class, 'index'])->name('view-qrcode');
+
+        Route::get('/berkas', [UserBerkasController::class, 'index'])->name('view-berkas');
+        Route::get('/berkas/{id}', [UserBerkasController::class, 'download'])->name('download-berkas');
     });
 
     //Admin
     Route::middleware([Admin::class])->group(function () {
         Route::get('/admin/coming-soon', [AdminAuthController::class, 'comingSoon'])->name('admin-view-coming-soon');
+        
         Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin-logout');
+        
         Route::get('/admin/dashboard', [AdminAuthController::class, 'dashboard'])->name('admin-view-dashboard');
 
         Route::get('/admin/jalur-pendaftaran', [AdminJalurPendaftaranController::class, 'index'])->name('admin-view-jalur-pendaftaran');
