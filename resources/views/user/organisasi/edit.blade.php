@@ -38,7 +38,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Tahun</label>
-                        <input type="text" class="form-control @error('tahun') is-invalid @enderror" name="tahun" value="{{old('tahun') ? old('tahun') : $organisasi->tahun}}" spellcheck="disabled" required>
+                        <input type="number" class="form-control @error('tahun') is-invalid @enderror" name="tahun" value="{{old('tahun') ? old('tahun') : $organisasi->tahun}}" spellcheck="disabled" required>
                         @error('tahun')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror

@@ -72,7 +72,7 @@ Route::middleware(['throttle:60,1'])->group(function () {
 
         Route::get('/prestasi', [UserPrestasiController::class, 'index'])->name('view-prestasi');
         Route::get('/prestasi/{id}', [UserPrestasiController::class, 'read'])->name('read-prestasi');
-        Route::get('/download-prestasi/{id}', [AdminPrestasiController::class, 'download'])->name('download-prestasi');
+        Route::get('/download-prestasi/{id}', [UserPrestasiController::class, 'download'])->name('download-prestasi');
         Route::get('/create-prestasi', [UserPrestasiController::class, 'viewCreate'])->name('view-create-prestasi');
         Route::post('/create-prestasi', [UserPrestasiController::class, 'create'])->name('create-prestasi');
         Route::get('/edit-prestasi/{id}', [UserPrestasiController::class, 'viewEdit'])->name('view-edit-prestasi');

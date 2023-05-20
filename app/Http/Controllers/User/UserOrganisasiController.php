@@ -34,7 +34,7 @@ class UserOrganisasiController extends Controller
         $validated = $request->validate([
             'nama' => 'required|string|min:1|max:100',
             'jabatan' => 'required|string|min:1|max:50',
-            'tahun' => 'required|string|min:4|max:20'
+            'tahun' => 'required|date_format:Y'
         ]);
         $user_id = Auth::guard('user')->user()->id;
         $organisasi = array(
@@ -60,7 +60,7 @@ class UserOrganisasiController extends Controller
         $validated = $request->validate([
             'nama' => 'required|string|min:1|max:100',
             'jabatan' => 'required|string|min:1|max:50',
-            'tahun' => 'required|string|min:4|max:20'
+            'tahun' => 'required|date_format:Y'
         ]);
         $user_id = Auth::guard('user')->user()->id;
         $organisasi = Organisasi::find($id);
