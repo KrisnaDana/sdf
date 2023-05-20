@@ -14,6 +14,10 @@ class UserBerkasController extends Controller
         //
     }
 
+    public function read($id): View {
+        //
+    }
+
     public function download($id): HttpFoundationResponse {
         //
     }

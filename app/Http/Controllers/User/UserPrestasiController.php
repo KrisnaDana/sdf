@@ -15,6 +15,10 @@ class UserPrestasiController extends Controller
         //
     }
 
+    public function read($id): View {
+        //
+    }
+
     public function download($id): HttpFoundationResponse {
         //
     }

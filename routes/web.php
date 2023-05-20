@@ -63,6 +63,7 @@ Route::middleware(['throttle:60,1'])->group(function () {
         Route::post('/registrasi', [UserRegistrasiController::class, 'registrasi'])->name('registrasi');
 
         Route::get('/organisasi', [UserOrganisasiController::class, 'index'])->name('view-organisasi');
+        Route::get('/organisasi/{id}', [UserOrganisasiController::class, 'read'])->name('read-organisasi');
         Route::get('/create-organisasi', [UserOrganisasiController::class, 'viewCreate'])->name('view-create-organisasi');
         Route::post('/create-organisasi', [UserOrganisasiController::class, 'create'])->name('create-organisasi');
         Route::get('/edit-organisasi/{id}', [UserOrganisasiController::class, 'viewEdit'])->name('view-edit-organisasi');
@@ -70,7 +71,8 @@ Route::middleware(['throttle:60,1'])->group(function () {
         Route::post('/delete-organisasi/{id}', [UserOrganisasiController::class, 'delete'])->name('delete-organisasi');
 
         Route::get('/prestasi', [UserPrestasiController::class, 'index'])->name('view-prestasi');
-        Route::get('/prestasi/{id}', [AdminPrestasiController::class, 'download'])->name('download-prestasi');
+        Route::get('/prestasi/{id}', [UserPrestasiController::class, 'read'])->name('read-prestasi');
+        Route::get('/download-prestasi/{id}', [AdminPrestasiController::class, 'download'])->name('download-prestasi');
         Route::get('/create-prestasi', [UserPrestasiController::class, 'viewCreate'])->name('view-create-prestasi');
         Route::post('/create-prestasi', [UserPrestasiController::class, 'create'])->name('create-prestasi');
         Route::get('/edit-prestasi/{id}', [UserPrestasiController::class, 'viewEdit'])->name('view-edit-prestasi');
@@ -80,7 +82,8 @@ Route::middleware(['throttle:60,1'])->group(function () {
         Route::get('/qrcode', [UserQrcodeController::class, 'index'])->name('view-qrcode');
 
         Route::get('/berkas', [UserBerkasController::class, 'index'])->name('view-berkas');
-        Route::get('/berkas/{id}', [UserBerkasController::class, 'download'])->name('download-berkas');
+        Route::get('/berkas/{id}', [UserBerkasController::class, 'read'])->name('read-berkas');
+        Route::get('/download-berkas/{id}', [UserBerkasController::class, 'download'])->name('download-berkas');
     });
 
     //Admin

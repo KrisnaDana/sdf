@@ -14,6 +14,10 @@ class UserOrganisasiController extends Controller
         //
     }
 
+    public function read($id): View {
+        //
+    }
+
     public function viewCreate(): View {
         //
     }
