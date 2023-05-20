@@ -81,8 +81,8 @@
                                 @if(Auth::guard('user')->check())
                                 <li><a href="{{route('view-pengumuman')}}"><i class="fa fa-calendar-o green_color"></i> <span>Pengumuman</span></a></li>
                                 <li><a href="{{route('view-coming-soon')}}"><i class="fa fa-graduation-cap blue1_color"></i> <span>Registrasi</span></a></li>
-                                <li><a href="{{route('view-coming-soon')}}"><i class="fa fa-group orange_color"></i> <span>Organisasi</span></a></li>
-                                <li><a href="{{route('view-coming-soon')}}"><i class="fa fa-trophy yellow_color"></i> <span>Prestasi</span></a></li>
+                                <li><a href="{{route('view-organisasi')}}"><i class="fa fa-group orange_color"></i> <span>Organisasi</span></a></li>
+                                <li><a href="{{route('view-prestasi')}}"><i class="fa fa-trophy yellow_color"></i> <span>Prestasi</span></a></li>
                                 <li><a href="{{route('view-coming-soon')}}"><i class="fa fa-qrcode blue2_color"></i> <span>QR Code</span></a></li>
                                 <li><a href="{{route('view-coming-soon')}}"><i class="fa fa-file red_color"></i> <span>Berkas</span></a></li>
                                 <li><a href="{{route('view-ganti-password')}}"><i class="fa fa-wrench purple_color"></i> <span>Ganti Password</span></a></li>
