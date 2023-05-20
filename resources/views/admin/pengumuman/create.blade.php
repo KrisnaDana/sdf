@@ -31,7 +31,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Deskripsi</label>
-                        <textarea class="form-control @error('deskripsi') is-invalid @enderror" rows="5" spellcheck="disabled">{{old('deskripsi')}}</textarea>
+                        <textarea class="form-control @error('deskripsi') is-invalid @enderror" rows="5" spellcheck="disabled" name="deskripsi">{{old('deskripsi')}}</textarea>
                         @error('deskripsi')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror

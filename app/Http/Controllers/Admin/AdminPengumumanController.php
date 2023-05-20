@@ -62,7 +62,7 @@ class AdminPengumumanController extends Controller
         $pengumuman = PengumumanSdf::find($id);
         $pengumuman->judul = $validated['judul'];
         if(!empty($validated['deskripsi'])){
-            $pengumuman->deskripsi = $validated['pengumuman'];
+            $pengumuman->deskripsi = $validated['deskripsi'];
         }else{
             $pengumuman->deskripsi = null;
         }

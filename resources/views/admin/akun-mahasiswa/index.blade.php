@@ -58,7 +58,6 @@
                         </thead>
                         <tbody>
                             @foreach($mahasiswas as $mahasiswa)
-                            @for($i=0;$i<30;$i++)
                             <tr>
                                 <td>{{$loop->index+1}}</td>
                                 <td>{{$mahasiswa->nim}}</td>
@@ -72,7 +71,6 @@
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-modal{{$loop->index+1}}"><i class="fa fa-trash-o text-white"></i></button>
                                 </td>
                             </tr>
-                            @endfor
                             <div class="modal fade" id="reset-password-modal{{$loop->index+1}}">
                                 <form method="get" action="{{route('admin-reset-password-akun-mahasiswa', ['id' => $mahasiswa->id])}}">
                                     <div class="modal-dialog">

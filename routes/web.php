@@ -143,7 +143,8 @@ Route::middleware(['throttle:60,1'])->group(function () {
         Route::post('/admin/delete-pengumuman/{id}', [AdminPengumumanController::class, 'delete'])->name('admin-delete-pengumuman');
 
         Route::get('/admin/berkas', [AdminBerkasController::class, 'index'])->name('admin-view-berkas');
-        Route::get('/admin/berkas/{id}', [AdminBerkasController::class, 'download'])->name('admin-download-berkas');
+        Route::get('/admin/berkas/{id}', [AdminBerkasController::class, 'read'])->name('admin-read-berkas');
+        Route::get('/admin/download-berkas/{id}', [AdminBerkasController::class, 'download'])->name('admin-download-berkas');
         Route::get('/admin/create-berkas', [AdminBerkasController::class, 'viewCreate'])->name('admin-view-create-berkas');
         Route::post('/admin/create-berkas', [AdminBerkasController::class, 'create'])->name('admin-create-berkas');
         Route::get('/admin/edit-berkas/{id}', [AdminBerkasController::class, 'viewEdit'])->name('admin-view-edit-berkas');

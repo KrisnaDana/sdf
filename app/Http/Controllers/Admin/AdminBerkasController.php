@@ -18,6 +18,11 @@ class AdminBerkasController extends Controller
         return view('admin.berkas.index', compact('berkas'));
     }
 
+    public function read($id): View {
+        $berkas = Berkas::find($id);
+        return view('admin.berkas.read', compact('berkas'));
+    }
+
     public function download($id): HttpFoundationResponse {
         $berkas = Berkas::find($id);
         return response()->download(public_path('/berkas/').$berkas->file_berkas);
@@ -30,6 +35,7 @@ class AdminBerkasController extends Controller
     public function create(Request $request): RedirectResponse {
         $validated = $request->validate([
             'nama' => 'required|string|min:1|max:50',
+            'deskripsi' => 'nullable|string|min:1|max:2000',
             'file_berkas' => 'required|file|mimes:pdf,doc,docx|max:10240'
         ]);
         $file_berkas = $request->file('file_berkas');
@@ -40,6 +46,9 @@ class AdminBerkasController extends Controller
             'nama' => $validated['nama'],
             'file_berkas' => $filename
         );
+        if(!empty($validated['deskripsi'])){
+            $berkas['deskripsi'] = $validated['deskripsi'];
+        }
         Berkas::create($berkas);
         return redirect()->route('admin-view-berkas')->with(["toast" => ["type" => "success", "message" => "Berhasil menambahkan berkas."]]);
     }
@@ -52,6 +61,7 @@ class AdminBerkasController extends Controller
     public function edit(Request $request, $id): RedirectResponse {
         $validated = $request->validate([
             'nama' => 'required|string|min:1|max:50',
+            'deskripsi' => 'nullable|string|min:1|max:2000',
             'file_berkas' => 'nullable|file|mimes:pdf,doc,docx|max:10240'
         ]);
         $berkas = Berkas::find($id);
@@ -63,6 +73,11 @@ class AdminBerkasController extends Controller
             $path = public_path('/berkas');
             $file_berkas->move($path, $filename);
             $berkas->file_berkas = $filename;
+        }
+        if(!empty($validated['deskripsi'])){
+            $berkas->deskripsi = $validated['deskripsi'];
+        }else{
+            $berkas->deskripsi = null;
         }
         $berkas->save();
         return redirect()->route('admin-view-edit-berkas', ['id' => $id])->with(["toast" => ["type" => "success", "message" => "Berhasil mengubah berkas."]]);

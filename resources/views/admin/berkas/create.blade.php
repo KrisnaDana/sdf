@@ -30,6 +30,13 @@
                         @enderror
                     </div>
                     <div class="mb-3">
+                        <label class="form-label">Deskripsi</label>
+                        <textarea class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" rows="5" spellcheck="disabled">{{old('deskripsi')}}</textarea>
+                        @error('deskripsi')
+                        <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label">File Berkas</label>
                         <input class="form-control @error('file_berkas') is-invalid @enderror" type="file" name="file_berkas" required>
                         @error('file_berkas')

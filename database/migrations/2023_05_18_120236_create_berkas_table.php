@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('berkas', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->text('deskripsi')->nullable();
             $table->string('file_berkas');
             $table->timestamps();
         });

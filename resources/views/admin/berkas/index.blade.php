@@ -59,7 +59,8 @@
                                 <td>{{$loop->index+1}}</td>
                                 <td>{{$b->nama}}</td>
                                 <td class="text-center">
-                                    <a href="{{route('admin-download-berkas', ['id' => $b->id])}}"><button type="button" class="btn btn-primary"><i class="fa fa-download text-white"></i></button></a>
+                                <a href="{{route('admin-read-berkas', ['id' => $b->id])}}"><button type="button" class="btn btn-primary"><i class="fa fa-book text-white"></i></button></a>
+                                    <a href="{{route('admin-download-berkas', ['id' => $b->id])}}"><button type="button" class="btn btn-success"><i class="fa fa-download text-white"></i></button></a>
                                     <a href="{{route('admin-view-edit-berkas', ['id' => $b->id])}}"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square text-white"></i></button></a>
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-modal{{$loop->index+1}}"><i class="fa fa-trash-o text-white"></i></button>
                                 </td>
