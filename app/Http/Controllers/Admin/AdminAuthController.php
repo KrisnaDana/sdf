@@ -7,6 +7,9 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use App\Models\ProgramStudi;
+use App\Models\JalurPendaftaran;
+use App\Models\User;
 
 class AdminAuthController extends Controller
 {
@@ -39,7 +42,15 @@ class AdminAuthController extends Controller
 
     public function dashboard(): View
     {
-        return view('admin.dashboard');
+        $program_studis = ProgramStudi::all();
+        $mahasiswas = User::get(['id', 'program_studi_id', 'status']);
+        $status = array(
+            'Belum registrasi',
+            'Menunggu konfirmasi registrasi',
+            'Perbaikan registrasi',
+            'Teregistrasi'
+        );
+        return view('admin.dashboard', compact('program_studis', 'mahasiswas'));
     }
 
     public function comingSoon(): View

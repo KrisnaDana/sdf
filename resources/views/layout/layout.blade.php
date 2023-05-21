@@ -57,7 +57,7 @@
                             @endif
                             <ul class="list-unstyled components">
                                 @if(Auth::guard('admin')->check() && Auth::guard('admin')->user()->role == "Admin")
-                                <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o red_color"></i> <span>Dashboard</span></a></li>
+                                <li><a href="{{route('admin-view-dashboard')}}"><i class="fa fa-bar-chart-o red_color"></i> <span>Dashboard</span></a></li>
                                 <li>
                                     <a href="#tour" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-wrench green_color"></i> <span>Kelola Akun</span></a>
                                     <ul class="collapse list-unstyled" id="tour">
@@ -73,7 +73,7 @@
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-graduation-cap blue1_color"></i> <span>Registrasi</span></a></li>
                                 @endif
                                 @if(Auth::guard('admin')->check() && Auth::guard('admin')->user()->role == "Kesekre")
-                                <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-bar-chart-o red_color"></i> <span>Dashboard</span></a></li>
+                                <li><a href="{{route('admin-view-dashboard')}}"><i class="fa fa-bar-chart-o red_color"></i> <span>Dashboard</span></a></li>
                                 <li><a href="{{route('admin-view-pengumuman')}}"><i class="fa fa-calendar-o green_color"></i> <span>Pengumuman</span></a></li>
                                 <li><a href="{{route('admin-view-berkas')}}"><i class="fa fa-file orange_color"></i> <span>Berkas</span></a></li>
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-graduation-cap blue1_color"></i> <span>Registrasi</span></a></li>
