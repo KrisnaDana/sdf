@@ -44,13 +44,36 @@ class AdminAuthController extends Controller
     {
         $program_studis = ProgramStudi::all();
         $mahasiswas = User::get(['id', 'program_studi_id', 'status']);
-        $status = array(
+        $statuses = array(
             'Belum registrasi',
             'Mengajukan registrasi',
             'Perbaikan registrasi',
             'Teregistrasi'
         );
-        return view('admin.dashboard', compact('program_studis', 'mahasiswas'));
+        
+        $information = [];
+        for($i=0; $i<count($program_studis); $i++){
+            for($j=0; $j<count($statuses); $j++){
+                $temp = 0;
+                foreach($mahasiswas as $mahasiswa){
+                    if($mahasiswa->program_studi_id == $program_studis[$i]->id && $mahasiswa->status == $statuses[$j]){
+                        $temp++;
+                    }
+                }
+                $information[$i][$j] = $temp;
+            }
+        }
+        $total = [];
+        for($i=0; $i<count($program_studis); $i++){
+            $temp = 0;
+            foreach($mahasiswas as $mahasiswa){
+                if($mahasiswa->program_studi_id == $program_studis[$i]->id){
+                    $temp++;
+                }
+            }
+            $total[$i] = $temp;
+        }
+        return view('admin.dashboard', compact('program_studis', 'statuses', 'information', 'total'));
     }
 
     public function comingSoon(): View
