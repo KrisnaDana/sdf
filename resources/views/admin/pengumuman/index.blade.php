@@ -50,6 +50,7 @@
                             <tr>
                                 <th>No.</th>
                                 <th>Judul</th>
+                                <th>Munculkan otomatis</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
@@ -58,6 +59,7 @@
                             <tr>
                                 <td>{{$loop->index+1}}</td>
                                 <td>{{$pengumuman->judul}}</td>
+                                <td>{{$pengumuman->status}}</td>
                                 <td class="text-center">
                                     <a href="{{route('admin-read-pengumuman', ['id' => $pengumuman->id])}}"><button type="button" class="btn btn-primary"><i class="fa fa-book text-white"></i></button></a>
                                     <a href="{{route('admin-view-edit-pengumuman', ['id' => $pengumuman->id])}}"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square text-white"></i></button></a>
@@ -106,6 +108,7 @@
         for (i = 1; i < tr.length; i++) {
             td[0] = tr[i].getElementsByTagName("td")[0];
             td[1] = tr[i].getElementsByTagName("td")[1];
+            td[2] = tr[i].getElementsByTagName("td")[1];
             if (td[0]) {
                 txtValue = td[0].textContent || td[0].innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -122,7 +125,15 @@
                     check[1] = 0;
                 }
             }
-            if (check[0] == 1 || check[1] == 1) {
+            if (td[2]) {
+                txtValue = td[2].textContent || td[2].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    check[2] = 1;
+                } else {
+                    check[2] = 0;
+                }
+            }
+            if (check[0] == 1 || check[1] == 1 || check[2] == 1) {
                 tr[i].style.display = "";
                 displayedRow++;
             } else {

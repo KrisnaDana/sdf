@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('file_krm_lainnya')->nullable();
             $table->enum('koordinator', ['Ya', 'Tidak'])->default('Tidak');
             $table->string('nama_panggilan')->nullable();
-            $table->enum('status', ['Belum registrasi', 'Menunggu konfirmasi registrasi', 'Perbaikan registrasi', 'Teregistrasi'])->default('Belum registrasi');
+            $table->enum('status', ['Belum registrasi', 'Mengajukan registrasi', 'Perbaikan registrasi', 'Teregistrasi'])->default('Belum registrasi');
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan'])->nullable();
             $table->enum('agama', ['Hindu', 'Islam', 'Budha', 'Konghucu', 'Kristen Protestan', 'Kristen Katolik', 'Kristen Advent', 'Penganut Kepercayaan'])->nullable();
             $table->enum('golongan_darah', ['A', 'B', 'AB', 'O'])->nullable();

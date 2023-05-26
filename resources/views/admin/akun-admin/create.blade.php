@@ -39,16 +39,13 @@
                     <div class="mb-3">
                         <label class="form-label">Role</label>
                         <select class="form-control" name="role">
-                            @if(!empty(old('role') == "Admin"))
-                                <option value="Admin" selected>Admin</option>
-                            @else
-                                <option value="Admin">Admin</option>
-                            @endif
-                            @if(!empty(old('role') == "Kesekre"))
-                                <option value="Kesekre" selected>Kesekre</option>
-                            @else
-                                <option value="Kesekre">Kesekre</option>
-                            @endif
+                            @foreach($roles as $role)
+                                @if(old('role') == $role)
+                                    <option value="{{$role}}" selected>{{$role}}</option>
+                                @else
+                                    <option value="{{$role}}">{{$role}}</option>
+                                @endif
+                            @endforeach
                         </select>
                     </div>
                     <div class="mb-3">

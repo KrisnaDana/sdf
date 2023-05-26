@@ -46,7 +46,7 @@ class AdminAuthController extends Controller
         $mahasiswas = User::get(['id', 'program_studi_id', 'status']);
         $status = array(
             'Belum registrasi',
-            'Menunggu konfirmasi registrasi',
+            'Mengajukan registrasi',
             'Perbaikan registrasi',
             'Teregistrasi'
         );

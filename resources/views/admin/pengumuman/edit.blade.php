@@ -36,6 +36,18 @@
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Status munculkan otomatis</label>
+                        <select class="form-control" name="status">
+                            @foreach($statuses as $status)
+                                @if(old('status') == $status || (empty(old('status')) && $status == $pengumuman->status))
+                                    <option value="{{$status}}" selected>{{$status}}</option>
+                                @else
+                                    <option value="{{$status}}">{{$status}}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
                     <label class="form-label">Gambar</label>
                     <div class="mb-3 row">
                         <div class="col-10">

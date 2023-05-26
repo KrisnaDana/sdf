@@ -37,6 +37,18 @@
                         @enderror
                     </div>
                     <div class="mb-3">
+                        <label class="form-label">Status munculkan otomatis</label>
+                        <select class="form-control" name="status">
+                            @foreach($statuses as $status)
+                                @if(old('status') == $status)
+                                    <option value="{{$status}}" selected>{{$status}}</option>
+                                @else
+                                    <option value="{{$status}}">{{$status}}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label">Gambar</label>
                         <input class="form-control @error('file_gambar') is-invalid @enderror" type="file" name="file_gambar">
                         @error('file_gambar')

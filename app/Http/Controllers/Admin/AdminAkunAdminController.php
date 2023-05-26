@@ -16,7 +16,11 @@ class AdminAkunAdminController extends Controller
     }
 
     public function viewCreate(): View {
-        return view('admin.akun-admin.create');
+        $roles = array(
+            'Admin',
+            'Kesekre'
+        );
+        return view('admin.akun-admin.create', compact('roles'));
     }
 
     public function create(Request $request): RedirectResponse{
@@ -39,7 +43,11 @@ class AdminAkunAdminController extends Controller
 
     public function viewEdit($id): View {
         $admin = Admin::find($id);
-        return view('admin.akun-admin.edit', compact('admin'));
+        $roles = array(
+            'Admin',
+            'Kesekre'
+        );
+        return view('admin.akun-admin.edit', compact('admin', 'roles'));
     }
 
     public function edit(Request $request, $id): RedirectResponse {
