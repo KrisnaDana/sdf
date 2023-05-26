@@ -32,26 +32,13 @@
                     <div class="mb-3">
                         <label class="form-label">Tingkat</label>
                         <select class="form-control" name="tingkat">
-                            @if(old('tingkat') == "Kabupaten/Kota" || (empty(old('tingkat')) && $prestasi->tingkat == "Kabupaten/Kota"))
-                                <option value="Kabupaten/Kota" selected>Kabupaten/Kota</option>
-                            @else
-                                <option value="Kabupaten/Kota">Kabupaten/Kota</option>
-                            @endif
-                            @if(old('tingkat') == "Provinsi" || (empty(old('tingkat')) && $prestasi->tingkat == "Provinsi"))
-                                <option value="Provinsi" selected>Provinsi</option>
-                            @else
-                                <option value="Provinsi">Provinsi</option>
-                            @endif
-                            @if(old('tingkat') == "Nasional" || (empty(old('tingkat')) && $prestasi->tingkat == "Nasional"))
-                                <option value="Nasional" selected>Nasional</option>
-                            @else
-                                <option value="Nasional">Nasional</option>
-                            @endif
-                            @if(old('tingkat') == "Internasional" || (empty(old('tingkat')) && $prestasi->tingkat == "Internasional"))
-                                <option value="Internasional" selected>Internasional</option>
-                            @else
-                                <option value="Internasional">Internasional</option>
-                            @endif
+                            @foreach($tingkats as $tingkat)
+                                @if(old('tingkat') == $tingkat || (empty(old('tingkat')) && $prestasi->tingkat == $tingkat))
+                                    <option value="{{$tingkat}}" selected>{{$tingkat}}</option>
+                                @else
+                                    <option value="{{$tingkat}}">{{$tingkat}}</option>
+                                @endif
+                            @endforeach
                         </select>
                     </div>
                     <div class="mb-3">

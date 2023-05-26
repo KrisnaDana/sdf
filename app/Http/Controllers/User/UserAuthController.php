@@ -27,7 +27,7 @@ class UserAuthController extends Controller
         $mahasiswa->password = bcrypt($validated['password']);
         $mahasiswa->ganti_password = "Sudah";
         $mahasiswa->save();
-        return redirect()->route('view-ganti-password')->with(["toast" => ["type" => "success", "message" => "Berhasil mengganti password."]]);
+        return redirect()->route('view-pengumuman')->with(["toast" => ["type" => "success", "message" => "Berhasil mengganti password."]]);
     }
 
     public function logout(Request $request): RedirectResponse

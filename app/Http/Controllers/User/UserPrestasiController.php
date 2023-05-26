@@ -34,7 +34,13 @@ class UserPrestasiController extends Controller
     }
 
     public function viewCreate(): View {
-        return view('user.prestasi.create');
+        $tingkats = array(
+            'Kabupaten/Kota',
+            'Provinsi',
+            'Nasional',
+            'Internasional'
+        );
+        return view('user.prestasi.create', compact('tingkats'));
     }
 
     public function create(Request $request): RedirectResponse {
@@ -66,7 +72,13 @@ class UserPrestasiController extends Controller
         if($user_id != $prestasi->user_id) {
             return redirect()->back();
         }
-        return view('user.prestasi.edit', compact('prestasi'));
+        $tingkats = array(
+            'Kabupaten/Kota',
+            'Provinsi',
+            'Nasional',
+            'Internasional'
+        );
+        return view('user.prestasi.edit', compact('prestasi', 'tingkats'));
     }
 
     public function edit(Request $request, $id): RedirectResponse {

@@ -40,7 +40,7 @@
                         <label class="form-label">Role</label>
                         <select class="form-control" name="role">
                             @foreach($roles as $role)
-                                @if(old('role') == $role || (empty(old('role') && $admin->role == $role)))
+                                @if(old('role') == $role || (empty(old('role')) && $admin->role == $role))
                                     <option value="{{$role}}" selected>{{$role}}</option>
                                 @else
                                     <option value="{{$role}}">{{$role}}</option>
