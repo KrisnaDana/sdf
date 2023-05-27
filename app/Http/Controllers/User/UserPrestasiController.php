@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
 use App\Models\Prestasi;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class UserPrestasiController extends Controller
 {
@@ -30,7 +32,8 @@ class UserPrestasiController extends Controller
 
     public function download($id): HttpFoundationResponse {
         $prestasi = Prestasi::find($id);
-        return response()->download(public_path('/mahasiswa/prestasi/').$prestasi->file_berkas);
+        $filename = Str::slug($prestasi->nama).".pdf";
+        return response()->download(storage_path('/app/mahasiswa/prestasi/'.$prestasi->file_berkas), $filename);
     }
 
     public function viewCreate(): View {
@@ -51,9 +54,9 @@ class UserPrestasiController extends Controller
             'file_berkas' => 'required|file|mimes:pdf|max:2048'
         ]);
         $file_berkas = $request->file('file_berkas');
-        $filename = 'berkas-'. time() . "." . $file_berkas->getClientOriginalExtension();
-        $path = public_path('/mahasiswa/prestasi');
-        $file_berkas->move($path, $filename);
+        $filename = 'prestasi-'. time() . "." . $file_berkas->getClientOriginalExtension();
+        $path = "mahasiswa/prestasi/";
+        Storage::putFileAs($path, $file_berkas, $filename);
         $user_id = Auth::guard('user')->user()->id;
         $prestasi = array(
             'user_id' => $user_id,
@@ -97,11 +100,11 @@ class UserPrestasiController extends Controller
         $prestasi->tingkat = $validated['tingkat'];
         $prestasi->tahun = $validated['tahun'];
         if(!empty($validated['file_berkas'])){
-            File::delete(public_path('/mahasiswa/prestasi/').$prestasi->file_berkas);
+            File::delete(storage_path('/app/mahasiswa/prestasi/'.$prestasi->file_berkas));
             $file_berkas = $request->file('file_berkas');
-            $filename = 'berkas-'. time() . "." . $file_berkas->getClientOriginalExtension();
-            $path = public_path('/mahasiswa/prestasi');
-            $file_berkas->move($path, $filename);
+            $filename = 'prestasi-'. time() . "." . $file_berkas->getClientOriginalExtension();
+            $path = "mahasiswa/prestasi/";
+            Storage::putFileAs($path, $file_berkas, $filename);
             $prestasi->file_berkas = $filename;
         }
         $prestasi->save();
@@ -114,7 +117,7 @@ class UserPrestasiController extends Controller
         if($user_id != $prestasi->user_id) {
             return redirect()->back();
         }
-        File::delete(public_path('/mahasiswa/prestasi/').$prestasi->file_berkas);
+        File::delete(storage_path('/app/mahasiswa/prestasi/'.$prestasi->file_berkas));
         $prestasi->delete();
         return redirect()->route('view-prestasi')->with(["toast" => ["type" => "success", "message" => "Berhasil menghapus prestasi."]]);
     }

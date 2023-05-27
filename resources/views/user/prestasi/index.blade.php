@@ -64,7 +64,7 @@
                                 <td>{{$prestasi->tahun}}</td>
                                 <td class="text-center">
                                     <a href="{{route('read-prestasi', ['id' => $prestasi->id])}}"><button type="button" class="btn btn-primary"><i class="fa fa-book text-white"></i></button></a>
-                                    <a href="{{route('download-prestasi', ['id' => $prestasi->id])}}"><button type="button" class="btn btn-success"><i class="fa fa-download text-white"></i></button></a>
+                                    <a href="{{route('download-prestasi', ['id' => $prestasi->id])}}" target="_blank"><button type="button" class="btn btn-success"><i class="fa fa-download text-white"></i></button></a>
                                     <a href="{{route('view-edit-prestasi', ['id' => $prestasi->id])}}"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square text-white"></i></button></a>
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-modal{{$loop->index+1}}"><i class="fa fa-trash-o text-white"></i></button>
                                 </td>

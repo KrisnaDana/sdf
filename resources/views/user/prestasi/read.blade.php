@@ -33,7 +33,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">File Berkas</label>
-                    <a href="{{route('download-prestasi', ['id' => $prestasi->id])}}" style="width:100%;" type="button" class="model_bt btn btn-success">Download</a>
+                    <a href="{{route('download-prestasi', ['id' => $prestasi->id])}}" style="width:100%;" type="button" target="_blank" class="model_bt btn btn-success"><i class="fa fa-download text-white"></i>&nbsp;&nbsp;Download berkas prestasi</a>
                 </div>
             </div>
         </div>

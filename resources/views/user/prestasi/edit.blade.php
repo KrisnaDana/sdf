@@ -49,11 +49,14 @@
                         @enderror
                     </div>
                     <label class="form-label">File berkas</label>
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <input class="form-control @error('file_berkas') is-invalid @enderror" type="file" name="file_berkas">
                         @error('file_berkas')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
+                    </div>
+                    <div>
+                        <a href="{{route('download-prestasi', ['id' => $prestasi->id])}}" target="_blank" style="width:100%;" type="button" class="model_bt btn btn-success"><i class="fa fa-download text-white"></i>&nbsp;&nbsp;Download berkas prestasi</a>
                     </div>
                     <button style="width:100%;" type="submit" class="model_bt btn btn-primary mt-4">Submit</button>
                 </div>

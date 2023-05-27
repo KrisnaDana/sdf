@@ -84,6 +84,7 @@ Route::middleware(['throttle:60,1'])->group(function () {
         Route::get('/berkas', [UserBerkasController::class, 'index'])->name('view-berkas');
         Route::get('/berkas/{id}', [UserBerkasController::class, 'read'])->name('read-berkas');
         Route::get('/download-berkas/{id}', [UserBerkasController::class, 'download'])->name('download-berkas');
+        Route::get('/download-biodata', [UserBerkasController::class, 'biodata'])->name('download-biodata');
     });
 
     //Admin

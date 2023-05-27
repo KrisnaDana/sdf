@@ -10,6 +10,8 @@ use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class AdminBerkasController extends Controller
 {
@@ -25,7 +27,8 @@ class AdminBerkasController extends Controller
 
     public function download($id): HttpFoundationResponse {
         $berkas = Berkas::find($id);
-        return response()->download(public_path('/berkas/').$berkas->file_berkas);
+        $filename = Str::slug($berkas->nama).".pdf";
+        return response()->download(storage_path('/app/berkas/'.$berkas->file_berkas), $filename);
     }
 
     public function viewCreate(): View {
@@ -40,8 +43,8 @@ class AdminBerkasController extends Controller
         ]);
         $file_berkas = $request->file('file_berkas');
         $filename = 'berkas-'. time() . "." . $file_berkas->getClientOriginalExtension();
-        $path = public_path('/berkas');
-        $file_berkas->move($path, $filename);
+        $path = "berkas/";
+        Storage::putFileAs($path, $file_berkas, $filename);
         $berkas = array(
             'nama' => $validated['nama'],
             'file_berkas' => $filename
@@ -67,11 +70,11 @@ class AdminBerkasController extends Controller
         $berkas = Berkas::find($id);
         $berkas->nama = $validated['nama'];
         if(!empty($validated['file_berkas'])){
-            File::delete(public_path('/berkas/').$berkas->file_berkas);
+            File::delete(storage_path('/app/berkas/'.$berkas->file_berkas));
             $file_berkas = $request->file('file_berkas');
             $filename = 'berkas-'. time() . "." . $file_berkas->getClientOriginalExtension();
-            $path = public_path('/berkas');
-            $file_berkas->move($path, $filename);
+            $path = "berkas/";
+            Storage::putFileAs($path, $file_berkas, $filename);
             $berkas->file_berkas = $filename;
         }
         if(!empty($validated['deskripsi'])){
@@ -85,7 +88,7 @@ class AdminBerkasController extends Controller
 
     public function delete($id): RedirectResponse {
         $berkas = Berkas::find($id);
-        File::delete(public_path('/berkas/').$berkas->file_berkas);
+        File::delete(storage_path('/app/berkas/'.$berkas->file_berkas));
         $berkas->delete();
         return redirect()->route('admin-view-berkas')->with(["toast" => ["type" => "success", "message" => "Berhasil menghapus berkas."]]);
     }

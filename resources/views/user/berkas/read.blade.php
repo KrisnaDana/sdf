@@ -9,7 +9,7 @@
                     <h2>Berkas</h2>
                 </div>
                 <div class="col">
-                    <a href="{{route('admin-view-berkas')}}"><button type="button" class="btn cur-p btn-lg btn-danger" style="float: right;">Kembali</button></a>
+                    <a href="{{route('view-berkas')}}"><button type="button" class="btn cur-p btn-lg btn-danger" style="float: right;">Kembali</button></a>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
                     <textarea class="form-control" rows="5" disabled readonly>{{$berkas->deskripsi}}</textarea>
                 </div>
                 <div class="mb-3">
-                    <a href="{{route('admin-download-berkas', ['id' => $berkas->id])}}" target="_blank" style="width:100%;" type="button" class="model_bt btn btn-success"><i class="fa fa-download text-white"></i>&nbsp;&nbsp;Download berkas</a>
+                    <a href="{{route('download-berkas', ['id' => $berkas->id])}}" target="_blank" style="width:100%;" type="button" class="model_bt btn btn-success"><i class="fa fa-download text-white"></i>&nbsp;&nbsp;Download berkas</a>
                 </div>
             </div>
         </div>
