@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Guest;
 use App\Http\Middleware\Mahasiswa;
 use App\Http\Middleware\MahasiswaSudahGantiPassword;
+use App\Http\Middleware\MahasiswaTeregistrasi;
 use App\Http\Middleware\Admin;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\User\UserAuthController;
@@ -47,6 +48,8 @@ Route::middleware(['throttle:60,1'])->group(function () {
 
     //Mahasiswa
     Route::middleware([Mahasiswa::class])->group(function () {
+        Route::get('/coming-soon', [UserAuthController::class, 'comingSoon'])->name('view-coming-soon');
+
         Route::get('/logout', [UserAuthController::class, 'logout'])->name('logout');
         
         Route::get('/ganti-password', [UserAuthController::class, 'viewGantiPassword'])->name('view-ganti-password');
@@ -55,7 +58,6 @@ Route::middleware(['throttle:60,1'])->group(function () {
 
     //Mahasiswa Sudah Ganti Password
     Route::middleware([MahasiswaSudahGantiPassword::class])->group(function () {
-        Route::get('/coming-soon', [UserAuthController::class, 'comingSoon'])->name('view-coming-soon');
         
         Route::get('/pengumuman', [UserPengumumanController::class, 'viewPengumuman'])->name('view-pengumuman');
         
@@ -78,8 +80,11 @@ Route::middleware(['throttle:60,1'])->group(function () {
         Route::get('/edit-prestasi/{id}', [UserPrestasiController::class, 'viewEdit'])->name('view-edit-prestasi');
         Route::post('/edit-prestasi/{id}', [UserPrestasiController::class, 'edit'])->name('edit-prestasi');
         Route::post('/delete-prestasi/{id}', [UserPrestasiController::class, 'delete'])->name('delete-prestasi');
+    });
 
+    Route::middleware([MahasiswaTeregistrasi::class])->group(function () {
         Route::get('/qrcode', [UserQrcodeController::class, 'index'])->name('view-qrcode');
+        Route::get('/link-qrcode', [UserQrcodeController::class, 'link'])->name('link-qrcode');
 
         Route::get('/berkas', [UserBerkasController::class, 'index'])->name('view-berkas');
         Route::get('/berkas/{id}', [UserBerkasController::class, 'read'])->name('read-berkas');

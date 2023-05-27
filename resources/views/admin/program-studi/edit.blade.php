@@ -29,6 +29,13 @@
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Link Grup</label>
+                        <input type="text" class="form-control @error('link_grup') is-invalid @enderror" name="link_grup" value="{{old('link_grup') ? old('link_grup') : $program_studi->link_grup}}" spellcheck="disabled" required>
+                        @error('link_grup')
+                        <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
+                    </div>
                     <label class="form-label">QR Code</label>
                     <div class="mb-3 row">
                         <div class="col-10">

@@ -31,11 +31,15 @@ class AdminProgramStudiController extends Controller
     public function create(Request $request): RedirectResponse {
         $validated = $request->validate([
             'nama' => 'string|required|min:1|max:50|unique:App\Models\ProgramStudi,nama',
+            'link_grup' => 'nullable|string|max:255',
             'qrcode' => 'nullable|file|image|max:10240'
         ]);
         $program_studi = array(
             'nama' => $validated['nama']
         );
+        if(!empty($validated['link_grup'])){
+            $program_studi['link_grup'] = $validated['link_grup'];
+        }
         if(!empty($validated['qrcode'])){
             $qrcode = $request->file('qrcode');
             $filename = Str::slug($validated['nama']) . '.' . $qrcode->getClientOriginalExtension();
@@ -55,10 +59,16 @@ class AdminProgramStudiController extends Controller
     public function edit(Request $request, $id): RedirectResponse {
         $validated = $request->validate([
             'nama' => 'string|required|min:1|max:50|unique:App\Models\ProgramStudi,nama,'.$id,
+            'link_grup' => 'nullable|string|max:255',
             'qrcode' => 'nullable|file|image|max:10240'
         ]);
         $program_studi = ProgramStudi::find($id);
         $program_studi->nama = $validated['nama'];
+        if(!empty($validated['link_grup'])){
+            $program_studi->link_grup = $validated['link_grup'];
+        }else{
+            $program_studi->link_grup = null;
+        }
         if(!empty($validated['qrcode'])){
             File::delete(public_path('/img/qrcode/').$program_studi->file_qr);
             $qrcode = $request->file('qrcode');

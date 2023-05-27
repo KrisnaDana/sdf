@@ -24,6 +24,10 @@
                     <input type="text" class="form-control" value="{{$program_studi->nama}}" spellcheck="disabled" disabled readonly>
                 </div>
                 <div class="mb-3">
+                    <label class="form-label">Link Grup</label>
+                    <input type="text" class="form-control" value="{{$program_studi->link_grup}}" spellcheck="disabled" disabled readonly>
+                </div>
+                <div class="mb-3">
                     <label class="form-label">QR Code</label>
                     <div>
                         @if(!empty($program_studi->file_qr))

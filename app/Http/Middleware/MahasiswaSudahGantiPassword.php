@@ -18,8 +18,7 @@ class MahasiswaSudahGantiPassword
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::guard('user')->check()){
-            $user = Auth::guard('user')->user();
+        if(!empty($user = Auth::guard('user')->user())){
             $periode_pendaftaran = PeriodePendaftaran::all();
             $now = Carbon::now()->format('Y-m-d H:i:s');
             foreach($periode_pendaftaran as $p){

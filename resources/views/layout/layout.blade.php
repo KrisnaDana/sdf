@@ -17,6 +17,10 @@
       @livewireStyles
    </head>
    <body>
+    @php
+    $user = Auth::guard('user')->user();
+    $admin = Auth::guard('admin')->user();
+    @endphp
         @if($toast = Session::get('toast'))
             <div style="display: flex; justify-content: flex-end" id="toast">
                 @if($toast["type"] == "success")
@@ -48,15 +52,15 @@
                 <div class="inner_container">
                     <nav id="sidebar">
                         <header class="sidebar_blog_2">
-                            @if(Auth::guard('admin')->check() && Auth::guard('admin')->user()->role == "Admin")
+                            @if(!empty($admin) && $admin->role == "Admin")
                                 <h4 class="text-center">ADMIN - STUDENT DAY</h4>
-                            @elseif(Auth::guard('admin')->check() && Auth::guard('admin')->user()->role == "Kesekre")
+                            @elseif(!empty($admin) && $admin->role == "Kesekre")
                                 <h4 class="text-center">KESEKRE - STUDENT DAY</h4>
-                            @elseif(Auth::guard('user')->check())
+                            @elseif(!empty($user))
                                 <h4 class="text-center">STUDENT DAY</h4>
                             @endif
                             <ul class="list-unstyled components">
-                                @if(Auth::guard('admin')->check() && Auth::guard('admin')->user()->role == "Admin")
+                                @if(!empty($admin) && $admin->role == "Admin")
                                 <li><a href="{{route('admin-view-dashboard')}}"><i class="fa fa-bar-chart-o red_color"></i> <span>Dashboard</span></a></li>
                                 <li>
                                     <a href="#tour" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-wrench green_color"></i> <span>Kelola Akun</span></a>
@@ -72,19 +76,23 @@
                                 <li><a href="{{route('admin-view-berkas')}}"><i class="fa fa-file orange_color"></i> <span>Berkas</span></a></li>
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-graduation-cap blue1_color"></i> <span>Registrasi</span></a></li>
                                 @endif
-                                @if(Auth::guard('admin')->check() && Auth::guard('admin')->user()->role == "Kesekre")
+                                @if(!empty($admin) && $admin->role == "Kesekre")
                                 <li><a href="{{route('admin-view-dashboard')}}"><i class="fa fa-bar-chart-o red_color"></i> <span>Dashboard</span></a></li>
                                 <li><a href="{{route('admin-view-pengumuman')}}"><i class="fa fa-calendar-o green_color"></i> <span>Pengumuman</span></a></li>
                                 <li><a href="{{route('admin-view-berkas')}}"><i class="fa fa-file orange_color"></i> <span>Berkas</span></a></li>
                                 <li><a href="{{route('admin-view-coming-soon')}}"><i class="fa fa-graduation-cap blue1_color"></i> <span>Registrasi</span></a></li>
                                 @endif
-                                @if(Auth::guard('user')->check())
+                                @if(!empty($user))
                                 <li><a href="{{route('view-pengumuman')}}"><i class="fa fa-calendar-o green_color"></i> <span>Pengumuman</span></a></li>
                                 <li><a href="{{route('view-coming-soon')}}"><i class="fa fa-graduation-cap blue1_color"></i> <span>Registrasi</span></a></li>
                                 <li><a href="{{route('view-organisasi')}}"><i class="fa fa-group orange_color"></i> <span>Organisasi</span></a></li>
                                 <li><a href="{{route('view-prestasi')}}"><i class="fa fa-trophy yellow_color"></i> <span>Prestasi</span></a></li>
-                                <li><a href="{{route('view-coming-soon')}}"><i class="fa fa-qrcode blue2_color"></i> <span>QR Code</span></a></li>
+                                @endif
+                                @if(!empty($user) && $user->status == "Teregistrasi")
+                                <li><a href="{{route('view-qrcode')}}"><i class="fa fa-qrcode blue2_color"></i> <span>QR Code</span></a></li>
                                 <li><a href="{{route('view-berkas')}}"><i class="fa fa-file red_color"></i> <span>Berkas</span></a></li>
+                                @endif
+                                @if(!empty($user))
                                 <li><a href="{{route('view-ganti-password')}}"><i class="fa fa-wrench purple_color"></i> <span>Ganti Password</span></a></li>
                                 @endif
                             </ul>
@@ -102,14 +110,14 @@
                                         <div class="icon_info">
                                             <ul class="user_profile_dd">
                                                 <li>
-                                                    @if(Auth::guard('admin')->check())
-                                                        <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="{{url('/img/logo-sd-2023.png')}}" alt="profile" /><span class="name_user">{{Auth::guard('admin')->user()->username}}</span></a>
+                                                    @if(!empty($admin))
+                                                        <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="{{url('/img/logo-sd-2023.png')}}" alt="profile" /><span class="name_user">{{$admin->username}}</span></a>
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item" href="{{route('admin-logout')}}">Log Out</a>
                                                         </div>
                                                     @endif
-                                                    @if(Auth::guard('user')->check())
-                                                        <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="{{url('/img/logo-sd-2023.png')}}" alt="profile" /><span class="name_user">{{Auth::guard('user')->user()->nim}}</span></a>
+                                                    @if(!empty($user))
+                                                        <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="{{url('/img/logo-sd-2023.png')}}" alt="profile" /><span class="name_user">{{$user->nim}}</span></a>
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item" href="{{route('logout')}}">Log Out</a>
                                                         </div>

@@ -50,6 +50,7 @@
                             <tr>
                                 <th>No.</th>
                                 <th>Nama</th>
+                                <th>Link Grup</th>
                                 <th>QR Code</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
@@ -59,6 +60,7 @@
                             <tr>
                                 <td>{{$loop->index+1}}</td>
                                 <td>{{$program_studi->nama}}</td>
+                                <td>{{$program_studi->link_grup ? $program_studi->link_grup : "-"}}</td>
                                 @if(!empty($program_studi->file_qr))
                                     <td>Ada</td>
                                 @else
@@ -113,6 +115,7 @@
             td[0] = tr[i].getElementsByTagName("td")[0];
             td[1] = tr[i].getElementsByTagName("td")[1];
             td[2] = tr[i].getElementsByTagName("td")[2];
+            td[3] = tr[i].getElementsByTagName("td")[3];
             if (td[0]) {
                 txtValue = td[0].textContent || td[0].innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -137,7 +140,15 @@
                     check[2] = 0;
                 }
             }
-            if (check[0] == 1 || check[1] == 1 || check[2] == 1) {
+            if (td[3]) {
+                txtValue = td[3].textContent || td[3].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    check[3] = 1;
+                } else {
+                    check[3] = 0;
+                }
+            }
+            if (check[0] == 1 || check[1] == 1 || check[2] == 1 || check[3] == 1) {
                 tr[i].style.display = "";
                 displayedRow++;
             } else {

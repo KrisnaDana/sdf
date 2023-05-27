@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\PeriodePendaftaran;
 use Illuminate\Support\Carbon;
 
-class Mahasiswa
+class MahasiswaTeregistrasi
 {
     /**
      * Handle an incoming request.
@@ -23,7 +23,15 @@ class Mahasiswa
             $now = Carbon::now()->format('Y-m-d H:i:s');
             foreach($periode_pendaftaran as $p){
                 if($user->program_studi_id == $p->program_studi_id && $user->jalur_pendaftaran_id == $p->jalur_pendaftaran_id && $p->mulai <= $now && $now <= $p->berakhir){
-                    return $next($request);
+                    if($user->ganti_password == "Belum"){
+                        return redirect()->route('view-ganti-password');
+                    }else if($user->ganti_password == "Sudah"){
+                        if($user->status == "Teregistrasi"){
+                            return $next($request);
+                        }else{
+                            return redirect()->route('view-pengumuman');
+                        }
+                    }
                 }
             }
             Auth::guard('user')->logout();
