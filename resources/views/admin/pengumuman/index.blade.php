@@ -108,7 +108,7 @@
         for (i = 1; i < tr.length; i++) {
             td[0] = tr[i].getElementsByTagName("td")[0];
             td[1] = tr[i].getElementsByTagName("td")[1];
-            td[2] = tr[i].getElementsByTagName("td")[1];
+            td[2] = tr[i].getElementsByTagName("td")[2];
             if (td[0]) {
                 txtValue = td[0].textContent || td[0].innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
