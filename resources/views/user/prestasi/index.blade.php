@@ -4,7 +4,8 @@
 <div class="row column_title">
     <div class="col-md-12">
         <div class="page_title">
-        <div class="row">
+            @if($user->status == 'Belum registrasi' || $user->status == 'Kesalahan data registrasi')
+            <div class="row">
                 <div class="col" style="position: absolute; top: 50%; transform: translateY(-50%);">
                     <h2>Prestasi</h2>
                 </div>
@@ -12,6 +13,11 @@
                     <a href="{{route('view-create-prestasi')}}"><button type="button" class="btn cur-p btn-lg btn-success mr-3" style="float: right;">Tambah</button></a>
                 </div>
             </div>
+            @else
+            <div class="py-2">
+                <h2>Prestasi</h2>
+            </div>
+            @endif
         </div>
     </div>
 </div>
@@ -65,10 +71,13 @@
                                 <td class="text-center">
                                     <a href="{{route('read-prestasi', ['id' => $prestasi->id])}}"><button type="button" class="btn btn-primary"><i class="fa fa-book text-white"></i></button></a>
                                     <a href="{{route('download-prestasi', ['id' => $prestasi->id])}}" target="_blank"><button type="button" class="btn btn-success"><i class="fa fa-download text-white"></i></button></a>
+                                    @if($user->status == 'Belum registrasi' || $user->status == 'Kesalahan data registrasi')
                                     <a href="{{route('view-edit-prestasi', ['id' => $prestasi->id])}}"><button type="button" class="btn btn-warning"><i class="fa fa-pencil-square text-white"></i></button></a>
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-modal{{$loop->index+1}}"><i class="fa fa-trash-o text-white"></i></button>
+                                    @endif
                                 </td>
                             </tr>
+                            @if($user->status == 'Belum registrasi' || $user->status == 'Kesalahan data registrasi')
                             <div class="modal fade" id="delete-modal{{$loop->index+1}}">
                                 <form method="post" action="{{route('delete-prestasi', ['id' => $prestasi->id])}}">
                                     @csrf
@@ -89,6 +98,7 @@
                                     </div>
                                 </form>
                             </div>
+                            @endif
                             @endforeach
                         </tbody>
                     </table>

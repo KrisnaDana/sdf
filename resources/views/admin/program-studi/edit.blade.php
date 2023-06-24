@@ -23,7 +23,7 @@
                 @csrf
                 <div class="table_section padding_infor_info">
                     <div class="mb-3">
-                        <label class="form-label">Nama</label>
+                        <label class="form-label">Nama <span style="color:#FF0000">*</span></label>
                         <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{old('nama') ? old('nama') : $program_studi->nama}}" spellcheck="disabled" required>
                         @error('nama')
                         <div class="invalid-feedback">{{$message}}</div>
@@ -32,6 +32,7 @@
                     <div class="mb-3">
                         <label class="form-label">Link Grup</label>
                         <input type="text" class="form-control @error('link_grup') is-invalid @enderror" name="link_grup" value="{{old('link_grup') ? old('link_grup') : $program_studi->link_grup}}" spellcheck="disabled" required>
+                        <small>*Link Grup Line untuk Peserta Student Day</small>
                         @error('link_grup')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
@@ -40,6 +41,9 @@
                     <div class="mb-3 row">
                         <div class="col-10">
                             <input class="form-control @error('qrcode') is-invalid @enderror" type="file" name="qrcode">
+                            <small>*Pamflet yang Berisi QR Code untuk Grup Line Peserta Student Day</small>
+                            <br>
+                            <small>*Format File: JPG, PNG, JPEG</small>
                             @error('qrcode')
                             <div class="invalid-feedback">{{$message}}</div>
                             @enderror

@@ -23,21 +23,21 @@
                 @csrf
                 <div class="table_section padding_infor_info">
                     <div class="mb-3">
-                        <label class="form-label">NIM</label>
+                        <label class="form-label">NIM <span style="color:#FF0000">*</span></label>
                         <input type="number" class="form-control @error('nim') is-invalid @enderror" name="nim" value="{{old('nim')}}" spellcheck="disabled" required>
                         @error('nim')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Nama Lengkap</label>
+                        <label class="form-label">Nama Lengkap <span style="color:#FF0000">*</span></label>
                         <input type="text" class="form-control @error('nama_lengkap') is-invalid @enderror" name="nama_lengkap" value="{{old('nama_lengkap')}}" spellcheck="disabled" required>
                         @error('nama_lengkap')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Jalur Pendaftaran</label>
+                        <label class="form-label">Jalur Pendaftaran <span style="color:#FF0000">*</span></label>
                         @if(count($jalur_pendaftarans) == 0)
                             <input type="text" class="form-control" disabled readonly value="Isi data jalur pendaftaran terlebih dahulu">
                         @else
@@ -53,7 +53,7 @@
                         @endif
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Program Studi</label>
+                        <label class="form-label">Program Studi <span style="color:#FF0000">*</span></label>
                         @if(count($program_studis) == 0)
                             <input type="text" class="form-control" disabled readonly value="Isi data program studi terlebih dahulu">
                         @else
@@ -69,7 +69,7 @@
                         @endif
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Angkatan</label>
+                        <label class="form-label">Angkatan <span style="color:#FF0000">*</span></label>
                         <input type="number" class="form-control @error('angkatan') is-invalid @enderror" name="angkatan" spellcheck="disabled" value="{{ old('angkatan') ? old('angkatan') : date('Y')}}" required>
                         @error('angkatan')
                         <div class="invalid-feedback">{{$message}}</div>

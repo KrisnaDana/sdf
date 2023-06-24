@@ -23,7 +23,7 @@
                 @csrf
                 <div class="table_section padding_infor_info">
                     <div class="mb-3">
-                        <label class="form-label">Nama</label>
+                        <label class="form-label">Nama <span style="color:#FF0000">*</span></label>
                         <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{old('nama') ? old('nama') : $berkas->nama}}" spellcheck="disabled" required>
                         @error('nama')
                         <div class="invalid-feedback">{{$message}}</div>
@@ -36,12 +36,15 @@
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div>
-                    <label class="form-label">File berkas</label>
+                    <label class="form-label">File Berkas <span style="color:#FF0000">*</span></label>
                     <div class="mb-3">
                         <input class="form-control @error('file_berkas') is-invalid @enderror" type="file" name="file_berkas">
                         @error('file_berkas')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
+                        <small>*Format File: PDF, DOC, DOCX</small>
+                        <br>
+                        <small>*Ukuran Maksimal File: 10 MB</small>
                     </div>
                     <button style="width:100%;" type="submit" class="model_bt btn btn-primary mt-4">Submit</button>
                 </div>

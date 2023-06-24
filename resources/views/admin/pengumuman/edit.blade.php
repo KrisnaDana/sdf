@@ -23,7 +23,7 @@
                 @csrf
                 <div class="table_section padding_infor_info">
                     <div class="mb-3">
-                        <label class="form-label">Judul</label>
+                        <label class="form-label">Judul <span style="color:#FF0000">*</span></label>
                         <input type="text" class="form-control @error('judul') is-invalid @enderror" name="judul" value="{{old('judul') ? old('judul') : $pengumuman->judul}}" spellcheck="disabled" required>
                         @error('judul')
                         <div class="invalid-feedback">{{$message}}</div>
@@ -47,6 +47,9 @@
                                 @endif
                             @endforeach
                         </select>
+                        <small>*Munculkan pengumuman secara otomatis tanpa diklik oleh Peserta Student Day</small>
+                        <br>
+                        <small>*Hanya Satu Pengumuman saja yang akan Muncul secara Otomatis tanpa Diklik oleh Peserta Student Day</small>
                     </div>
                     <label class="form-label">Gambar</label>
                     <div class="mb-3 row">
@@ -55,6 +58,9 @@
                             @error('file_gambar')
                             <div class="invalid-feedback">{{$message}}</div>
                             @enderror
+                            <small>*Format File: JPG, PNG, JPEG</small>
+                            <br>
+                            <small>*Ukuran Maksimal File: 10 MB</small>
                         </div>
                         <div class="col-2">
                             <a href="{{route('admin-delete-pengumuman-gambar', ['id' => $pengumuman->id])}}"><button type="button" class="btn cur-p btn-lg btn-outline-danger" style="float: right;">Hapus Gambar</button></a>

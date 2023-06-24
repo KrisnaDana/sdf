@@ -23,14 +23,14 @@
                 @csrf
                 <div class="table_section padding_infor_info">
                     <div class="mb-3">
-                        <label class="form-label">Nama</label>
+                        <label class="form-label">Nama <span style="color:#FF0000">*</span></label>
                         <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{old('nama')}}" spellcheck="disabled" required>
                         @error('nama')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Tingkat</label>
+                        <label class="form-label">Tingkat <span style="color:#FF0000">*</span></label>
                         <select class="form-control" name="tingkat">
                             @foreach($tingkats as $tingkat)
                                 @if(old('tingkat') == $tingkat)
@@ -42,15 +42,18 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Tahun</label>
+                        <label class="form-label">Tahun <span style="color:#FF0000">*</span></label>
                         <input type="number" class="form-control @error('tahun') is-invalid @enderror" name="tahun" value="{{old('tahun')}}" spellcheck="disabled" required>
                         @error('tahun')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">File Berkas</label>
+                        <label class="form-label">File Berkas <span style="color:#FF0000">*</span></label>
                         <input class="form-control @error('file_berkas') is-invalid @enderror" type="file" name="file_berkas" required>
+                        <small>*Format file: PDF</small>
+                        <br>
+                        <small>*Ukuran File Maksimal 2 MB</small>
                         @error('file_berkas')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror

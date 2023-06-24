@@ -23,7 +23,7 @@
                 @csrf
                 <div class="table_section padding_infor_info">
                     <div class="mb-3">
-                        <label class="form-label">Judul</label>
+                        <label class="form-label">Judul <span style="color:#FF0000">*</span></label>
                         <input type="text" class="form-control @error('judul') is-invalid @enderror" name="judul" value="{{old('judul')}}" spellcheck="disabled" required>
                         @error('judul')
                         <div class="invalid-feedback">{{$message}}</div>
@@ -37,7 +37,7 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Status munculkan otomatis</label>
+                        <label class="form-label">Status munculkan otomatis <span style="color:#FF0000">*</span></label>
                         <select class="form-control" name="status">
                             @foreach($statuses as $status)
                                 @if(old('status') == $status)
@@ -47,6 +47,9 @@
                                 @endif
                             @endforeach
                         </select>
+                        <small>*Munculkan pengumuman secara otomatis tanpa diklik oleh Peserta Student Day</small>
+                        <br>
+                        <small>*Hanya Satu Pengumuman saja yang akan Muncul secara Otomatis tanpa Diklik oleh Peserta Student Day</small>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Gambar</label>
@@ -54,6 +57,9 @@
                         @error('file_gambar')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
+                        <small>*Format File: JPG, PNG, JPEG</small>
+                        <br>
+                        <small>*Ukuran Maksimal File: 10 MB</small>
                     </div>
                     <button style="width:100%;" type="submit" class="model_bt btn btn-primary mt-4">Submit</button>
                 </div>

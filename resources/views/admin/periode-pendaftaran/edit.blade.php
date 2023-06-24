@@ -23,7 +23,7 @@
                 @csrf
                 <div class="table_section padding_infor_info">
                     <div class="mb-3">
-                        <label class="form-label">Program Studi</label>
+                        <label class="form-label">Program Studi <span style="color:#FF0000">*</span></label>
                         @if(count($program_studis) == 0)
                             <input type="text" class="form-control" disabled readonly value="Isi data program studi terlebih dahulu">
                         @else
@@ -39,7 +39,7 @@
                         @endif
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Jalur Pendaftaran</label>
+                        <label class="form-label">Jalur Pendaftaran <span style="color:#FF0000">*</span></label>
                         @if(count($jalur_pendaftarans) == 0)
                             <input type="text" class="form-control" disabled readonly value="Isi data jalur pendaftaran terlebih dahulu">
                         @else
@@ -55,14 +55,14 @@
                         @endif
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Mulai</label>
+                        <label class="form-label">Mulai <span style="color:#FF0000">*</span></label>
                         <input type="datetime-local" class="form-control @error('mulai') is-invalid @enderror" name="mulai" value="{{old('mulai') ? old('mulai') : $periode_pendaftaran->mulai}}" spellcheck="disabled" required>
                         @error('mulai')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Berakhir</label>
+                        <label class="form-label">Berakhir <span style="color:#FF0000">*</span></label>
                         <input type="datetime-local" class="form-control @error('berakhir') is-invalid @enderror" name="berakhir" value="{{old('berakhir') ? old('berakhir') : $periode_pendaftaran->berakhir}}" spellcheck="disabled" required>
                         @error('berakhir')
                         <div class="invalid-feedback">{{$message}}</div>

@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>{{'SMFT - Student Day '.date('Y')}}</title>
-      <link rel="icon" href="{{url('/img/logo-sd-2023.png')}}" type="image/png" />
-      <link rel="stylesheet" href="{{url('/pluto/css/bootstrap.min.css')}}" />
-      <link rel="stylesheet" href="{{url('/pluto/style.css')}}" />
-      <link rel="stylesheet" href="{{url('/pluto/css/responsive.css')}}" />
-      <link rel="stylesheet" href="{{url('/pluto/css/color_2.css')}}" />
-      <link rel="stylesheet" href="{{url('/pluto/css/bootstrap-select.css')}}" />
-      <link rel="stylesheet" href="{{url('/pluto/css/perfect-scrollbar.css')}}" />
-      <link rel="stylesheet" href="{{url('/pluto/css/custom.css')}}" />
-      <link rel="stylesheet" href="{{url('/admin/css/style.css')}}" />
-      @livewireStyles
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{'SMFT - Student Day '.date('Y')}}</title>
+        <link rel="icon" href="{{url('/img/logo-sd-2023.png')}}" type="image/png" />
+        <link rel="stylesheet" href="{{url('/pluto/css/bootstrap.min.css')}}" />
+        <link rel="stylesheet" href="{{url('/pluto/style.css')}}" />
+        <link rel="stylesheet" href="{{url('/pluto/css/responsive.css')}}" />
+        <link rel="stylesheet" href="{{url('/pluto/css/color_2.css')}}" />
+        <link rel="stylesheet" href="{{url('/pluto/css/bootstrap-select.css')}}" />
+        <link rel="stylesheet" href="{{url('/pluto/css/perfect-scrollbar.css')}}" />
+        <link rel="stylesheet" href="{{url('/pluto/css/custom.css')}}" />
+        <link rel="stylesheet" href="{{url('/admin/css/style.css')}}" />
+        <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+        <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+        @livewireStyles
    </head>
    <body>
     @php
@@ -84,7 +87,7 @@
                                 @endif
                                 @if(!empty($user))
                                 <li><a href="{{route('view-pengumuman')}}"><i class="fa fa-calendar-o green_color"></i> <span>Pengumuman</span></a></li>
-                                <li><a href="{{route('view-coming-soon')}}"><i class="fa fa-graduation-cap blue1_color"></i> <span>Registrasi</span></a></li>
+                                <li><a href="{{route('view-registrasi')}}"><i class="fa fa-graduation-cap blue1_color"></i> <span>Registrasi</span></a></li>
                                 <li><a href="{{route('view-organisasi')}}"><i class="fa fa-group orange_color"></i> <span>Organisasi</span></a></li>
                                 <li><a href="{{route('view-prestasi')}}"><i class="fa fa-trophy yellow_color"></i> <span>Prestasi</span></a></li>
                                 @endif

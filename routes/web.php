@@ -63,6 +63,7 @@ Route::middleware(['throttle:60,1'])->group(function () {
         
         Route::get('/registrasi', [UserRegistrasiController::class, 'viewRegistrasi'])->name('view-registrasi');
         Route::post('/registrasi', [UserRegistrasiController::class, 'registrasi'])->name('registrasi');
+        Route::get('/download-krm', [UserRegistrasiController::class, 'downloadKrm'])->name('download-krm');
 
         Route::get('/organisasi', [UserOrganisasiController::class, 'index'])->name('view-organisasi');
         Route::get('/organisasi/{id}', [UserOrganisasiController::class, 'read'])->name('read-organisasi');

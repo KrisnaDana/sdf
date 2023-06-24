@@ -47,7 +47,8 @@ class AdminAuthController extends Controller
         $statuses = array(
             'Belum registrasi',
             'Mengajukan registrasi',
-            'Perbaikan registrasi',
+            'Kesalahan data registrasi',
+            'Mengajukan perbaikan registrasi',
             'Teregistrasi'
         );
         

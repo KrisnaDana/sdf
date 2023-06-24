@@ -12,13 +12,15 @@ use App\Models\Prestasi;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Crypt;
 
 class UserPrestasiController extends Controller
 {
     public function index(): View {
-        $user_id = Auth::guard('user')->user()->id;
+        $user = Auth::guard('user')->user();
+        $user_id = $user->id;
         $prestasis = Prestasi::where('user_id', $user_id)->orderBy('id', 'asc')->get();
-        return view('user.prestasi.index', compact('prestasis'));
+        return view('user.prestasi.index', compact('prestasis', 'user'));
     }
 
     public function read($id): View {
@@ -36,7 +38,11 @@ class UserPrestasiController extends Controller
         return response()->download(storage_path('/app/mahasiswa/prestasi/'.$prestasi->file_berkas), $filename);
     }
 
-    public function viewCreate(): View {
+    public function viewCreate(){
+        $user = Auth::guard('user')->user();
+        if(!($user->status == 'Belum registrasi' || $user->status == 'Kesalahan data registrasi')){
+            return redirect()->route('view-prestasi');
+        }
         $tingkats = array(
             'Kabupaten/Kota',
             'Provinsi',
@@ -47,6 +53,10 @@ class UserPrestasiController extends Controller
     }
 
     public function create(Request $request): RedirectResponse {
+        $user = Auth::guard('user')->user();
+        if(!($user->status == 'Belum registrasi' || $user->status == 'Kesalahan data registrasi')){
+            return redirect()->route('view-prestasi');
+        }
         $validated = $request->validate([
             'nama' => 'required|string|min:1|max:100',
             'tingkat' => 'required|in:Kabupaten/Kota,Provinsi,Nasional,Internasional',
@@ -54,7 +64,8 @@ class UserPrestasiController extends Controller
             'file_berkas' => 'required|file|mimes:pdf|max:2048'
         ]);
         $file_berkas = $request->file('file_berkas');
-        $filename = 'prestasi-'. time() . "." . $file_berkas->getClientOriginalExtension();
+        $encrypted = "prestasi-".$user->nim."-".time();
+        $filename = Crypt::encryptString($encrypted) . "." . $file_berkas->getClientOriginalExtension();
         $path = "mahasiswa/prestasi/";
         Storage::putFileAs($path, $file_berkas, $filename);
         $user_id = Auth::guard('user')->user()->id;
@@ -69,8 +80,12 @@ class UserPrestasiController extends Controller
         return redirect()->route('view-prestasi')->with(["toast" => ["type" => "success", "message" => "Berhasil menambahkan prestasi."]]);
     }
 
-    public function viewEdit($id): View {
-        $user_id = Auth::guard('user')->user()->id;
+    public function viewEdit($id){
+        $user = Auth::guard('user')->user();
+        if(!($user->status == 'Belum registrasi' || $user->status == 'Kesalahan data registrasi')){
+            return redirect()->route('view-prestasi');
+        }
+        $user_id = $user->id;
         $prestasi = Prestasi::find($id);
         if($user_id != $prestasi->user_id) {
             return redirect()->back();
@@ -85,13 +100,17 @@ class UserPrestasiController extends Controller
     }
 
     public function edit(Request $request, $id): RedirectResponse {
+        $user = Auth::guard('user')->user();
+        if(!($user->status == 'Belum registrasi' || $user->status == 'Kesalahan data registrasi')){
+            return redirect()->route('view-prestasi');
+        }
         $validated = $request->validate([
             'nama' => 'required|string|min:1|max:100',
             'tingkat' => 'required|in:Kabupaten/Kota,Provinsi,Nasional,Internasional',
             'tahun' => 'required|date_format:Y',
             'file_berkas' => 'nullable|file|mimes:pdf|max:2048'
         ]);
-        $user_id = Auth::guard('user')->user()->id;
+        $user_id = $user->id;
         $prestasi = Prestasi::find($id);
         if($user_id != $prestasi->user_id) {
             return redirect()->back();
@@ -102,7 +121,8 @@ class UserPrestasiController extends Controller
         if(!empty($validated['file_berkas'])){
             File::delete(storage_path('/app/mahasiswa/prestasi/'.$prestasi->file_berkas));
             $file_berkas = $request->file('file_berkas');
-            $filename = 'prestasi-'. time() . "." . $file_berkas->getClientOriginalExtension();
+            $encrypted = "prestasi-".$user->nim."-".time();
+            $filename = Crypt::encryptString($encrypted) . "." . $file_berkas->getClientOriginalExtension();
             $path = "mahasiswa/prestasi/";
             Storage::putFileAs($path, $file_berkas, $filename);
             $prestasi->file_berkas = $filename;
@@ -112,7 +132,11 @@ class UserPrestasiController extends Controller
     }
 
     public function delete($id): RedirectResponse {
-        $user_id = Auth::guard('user')->user()->id;
+        $user = Auth::guard('user')->user();
+        if(!($user->status == 'Belum registrasi' || $user->status == 'Kesalahan data registrasi')){
+            return redirect()->route('view-prestasi');
+        }
+        $user_id = $user->id;
         $prestasi = Prestasi::find($id);
         if($user_id != $prestasi->user_id) {
             return redirect()->back();
