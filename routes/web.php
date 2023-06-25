@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\AdminAkunMahasiswaController;
 use App\Http\Controllers\Admin\AdminPeriodePendaftaranController;
 use App\Http\Controllers\Admin\AdminPengumumanController;
 use App\Http\Controllers\Admin\AdminBerkasController;
+use App\Http\Controllers\Admin\AdminRegistrasiController;
 
 /*
 |--------------------------------------------------------------------------

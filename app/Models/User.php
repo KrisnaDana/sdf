@@ -55,4 +55,8 @@ class User extends Authenticatable
     public function prestasis(): HasMany {
         return $this->hasMany(Prestasi::class);
     }
+
+    public function notes(): HasMany {
+        return $this->hasMany(Note::class);
+    }
 }

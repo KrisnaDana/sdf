@@ -51,7 +51,7 @@
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>Biodata</td>
+                                <td>Form Verifikasi Mahasiswa</td>
                                 <td class="text-center">
                                     <a href="{{route('download-biodata')}}" target="_blank"><button type="button" class="btn btn-success"><i class="fa fa-download text-white"></i></button></a>
                                 </td>
