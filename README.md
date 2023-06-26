@@ -5,4 +5,4 @@
 -   isi data pada tabel admins dengan role sebagai admin dan enkripsi passwordnya pada website `https://bcrypt.online/`
 -   jalankan perintah `php artisan serve`
 -   halaman login admin pada path `/admin-login`
--   halaman login mahasiswa pada path `login`
+-   halaman login mahasiswa pada path `/login`
