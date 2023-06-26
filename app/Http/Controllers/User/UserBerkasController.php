@@ -59,13 +59,13 @@ class UserBerkasController extends Controller
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
-    $pdfContent = $dompdf->output();
+        $pdfContent = $dompdf->output();
 
-    $headers = [
-        'Content-Type' => 'application/pdf',
-        'Content-Disposition' => 'attachment; filename="FILE VERIFIKASI '.$user->nim.'.pdf"',
-    ];
-    $response = new Response($pdfContent, 200, $headers);
-    return $response;
+        $headers = [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'attachment; filename="FILE VERIFIKASI '.$user->nim.'.pdf"',
+        ];
+        $response = new Response($pdfContent, 200, $headers);
+        return $response;
     }
 }

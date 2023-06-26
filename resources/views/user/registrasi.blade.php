@@ -315,7 +315,7 @@
                             <input class="form-check-input" type="checkbox" value="1" name="organisasi">
                             @endif
                             <label>
-                                Saya memiliki pengalaman organisasi
+                                Saya memiliki Pengalaman Organisasi
                             </label>
                         </div>
                         <div class="form-check">
@@ -409,7 +409,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Kartu Registrasi Mahasiswa (KRM) / Bukti Registrasi Online</label>
-                    <a href="{{route('download-krm')}}" class="btn btn-success py-2" style="margin-top: 1px; width:100%;"><i class="fa fa-download"> Download KRM / Bukti Registrasi Online</i></a>
+                    <a href="{{route('download-krm')}}" target="_blank" class="btn btn-success py-2" style="margin-top: 1px; width:100%;"><i class="fa fa-download"> Download KRM / Bukti Registrasi Online</i></a>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Nama Panggilan</label>
@@ -507,7 +507,7 @@
                         <input class="form-check-input" type="checkbox" disabled readonly>
                         @endif
                         <label>
-                            Saya memiliki pengalaman organisasi
+                            Saya memiliki Pengalaman Organisasi
                         </label>
                     </div>
                     <div class="form-check">
