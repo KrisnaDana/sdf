@@ -40,23 +40,28 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function program_studi(): BelongsTo {
+    public function program_studi(): BelongsTo
+    {
         return $this->belongsTo(ProgramStudi::class);
     }
 
-    public function jalur_pendaftaran(): BelongsTo {
+    public function jalur_pendaftaran(): BelongsTo
+    {
         return $this->belongsTo(JalurPendaftaran::class);
     }
 
-    public function organisasis(): HasMany {
+    public function organisasis(): HasMany
+    {
         return $this->hasMany(Organisasi::class);
     }
 
-    public function prestasis(): HasMany {
+    public function prestasis(): HasMany
+    {
         return $this->hasMany(Prestasi::class);
     }
 
-    public function notes(): HasMany {
+    public function notes(): HasMany
+    {
         return $this->hasMany(Note::class);
     }
 }

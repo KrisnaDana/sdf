@@ -48,7 +48,8 @@ return new class extends Migration
             $table->string('penyakit_khusus')->nullable();
             $table->enum('organisasi', ['Ya', 'Tidak'])->nullable();
             $table->enum('prestasi', ['Ya', 'Tidak'])->nullable();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('gugus');
+            $table->string('no_gugus');
             $table->rememberToken();
             $table->timestamps();
         });

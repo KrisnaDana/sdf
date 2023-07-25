@@ -166,5 +166,6 @@ Route::middleware(['throttle:60,1'])->group(function () {
         Route::post('/admin/note-registrasi/{id}', [AdminRegistrasiController::class, 'note'])->name('admin-note-registrasi');
         Route::get('/admin/konfirmasi-registrasi/{id}', [AdminRegistrasiController::class, 'konfirmasi'])->name('admin-konfirmasi-registrasi');
         Route::get('/admin/download-biodata-registrasi/{id}', [AdminRegistrasiController::class, 'downloadBiodata'])->name('admin-download-biodata-registrasi');
+        Route::get('/admin/export/excel', [AdminRegistrasiController::class, 'exportexcel'])->name('exportexcel');
     });
 });

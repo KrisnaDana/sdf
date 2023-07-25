@@ -119,7 +119,7 @@ class AdminAkunMahasiswaController extends Controller
         $namaFile = $data->getClientOriginalName();
         $data->move('DataMahasiswa', $namaFile);
 
-        Excel::import(new DataMahasiswa, \public_path('/DataMahasiswa' . $namaFile));
+        Excel::import(new DataMahasiswa, public_path('/DataMahasiswa/' . $namaFile));
         return redirect()->route('admin-view-akun-mahasiswa')->with(["toast" => ["type" => "success", "message" => "Berhasil menambahkan akun mahasiswa."]]);
     }
 }

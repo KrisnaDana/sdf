@@ -17,8 +17,11 @@
                 <div class="d-flex">
                     <div class="w-100">
                         <div class="input-group">
-                            <span class="input-group-text" style="border-top-right-radius:0px; border-bottom-right-radius:0px;"><i class="fa fa-search text-secondary"></i></span>
-                            <input class="form-control" type="text" id="search" placeholder="Cari" onkeyup="searchFunction()" />
+                            <span class="input-group-text"
+                                style="border-top-right-radius:0px; border-bottom-right-radius:0px;"><i
+                                    class="fa fa-search text-secondary"></i></span>
+                            <input class="form-control" type="text" id="search" placeholder="Cari"
+                                onkeyup="searchFunction()" />
                         </div>
                     </div>
                     <div class="ml-4">
@@ -30,7 +33,8 @@
                         </select>
                     </div>
                     <div class="ml-4">
-                        <select class="form-control" id="showProgramStudi" style="width:200px;" onchange="filterFunction()">
+                        <select class="form-control" id="showProgramStudi" style="width:200px;"
+                            onchange="filterFunction()">
                             <option value="0" selected>Semua Program Studi</option>
                             @foreach($program_studis as $program_studi)
                             @if($program_studi->id == $filter_program_studi)
@@ -42,7 +46,8 @@
                         </select>
                     </div>
                     <div class="ml-4">
-                        <select class="form-control" id="showJalurPendaftaran" style="width:225px;" onchange="filterFunction()">
+                        <select class="form-control" id="showJalurPendaftaran" style="width:225px;"
+                            onchange="filterFunction()">
                             <option value="0" selected>Semua Jalur Pendaftaran</option>
                             @foreach($jalur_pendaftarans as $jalur_pendaftaran)
                             @if($jalur_pendaftaran->id == $filter_jalur_pendaftaran)
@@ -66,7 +71,14 @@
                         </select>
                     </div>
                     <div class="ml-4">
-                        <a href="{{route('admin-view-registrasi').'?program_studi='.$filter_program_studi.'&jalur_pendaftaran='.$filter_jalur_pendaftaran.'&status='.$filter_status}}"><button type="button" class="btn btn-outline-secondary m-0" id="btn-refresh" style="float:right;"><i class="fa fa-refresh text-secondary"></i></button></a>
+                        <a href="export/excel" class="btn btn-primary">Export Data</a>
+                    </div>
+
+                    <div class="ml-4">
+                        <a
+                            href="{{route('admin-view-registrasi').'?program_studi='.$filter_program_studi.'&jalur_pendaftaran='.$filter_jalur_pendaftaran.'&status='.$filter_status}}"><button
+                                type="button" class="btn btn-outline-secondary m-0" id="btn-refresh"
+                                style="float:right;"><i class="fa fa-refresh text-secondary"></i></button></a>
                     </div>
                 </div>
             </div>
@@ -77,7 +89,8 @@
     <div class="col">
         <div class="white_shd full margin_bottom_30">
             <div class="table_section padding_infor_info">
-                <div class="table-responsive-sm"> <!--  <div class="table-responsive-sm" style="min-width:max-content"> -->
+                <div class="table-responsive-sm">
+                    <!--  <div class="table-responsive-sm" style="min-width:max-content"> -->
                     <table class="table" id="table">
                         <thead>
                             <tr>
@@ -100,7 +113,9 @@
                                 <td>{{$mahasiswa->jalur_pendaftaran->nama}}</td>
                                 <td>{{$mahasiswa->status}}</td>
                                 <td class="text-center">
-                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#biodata-modal-{{$loop->index+1}}"><i class="fa fa-pencil text-white"></i></button>
+                                    <button type="button" class="btn btn-success" data-toggle="modal"
+                                        data-target="#biodata-modal-{{$loop->index+1}}"><i
+                                            class="fa fa-pencil text-white"></i></button>
                                 </td>
                             </tr>
                             @endforeach
@@ -126,10 +141,13 @@
                             <a type="button" class="nav-link active" style="cursor: pointer;">Biodata</a>
                         </li>
                         <li class="nav-item">
-                            <a type="button" class="nav-link" style="cursor: pointer;" data-toggle="modal" data-target="#konfirmasi-modal-{{$loop->index+1}}" data-dismiss="modal">Konfirmasi</a>
+                            <a type="button" class="nav-link" style="cursor: pointer;" data-toggle="modal"
+                                data-target="#konfirmasi-modal-{{$loop->index+1}}" data-dismiss="modal">Konfirmasi</a>
                         </li>
                         <li class="nav-item">
-                            <a type="button" class="nav-link" style="cursor: pointer;" data-toggle="modal" data-target="#file-verifikasi-modal-{{$loop->index+1}}" data-dismiss="modal">File Verifikasi</a>
+                            <a type="button" class="nav-link" style="cursor: pointer;" data-toggle="modal"
+                                data-target="#file-verifikasi-modal-{{$loop->index+1}}" data-dismiss="modal">File
+                                Verifikasi</a>
                         </li>
                     </ul>
                 </div>
@@ -137,58 +155,71 @@
                     <div class="mb-3">
                         <div>
                             @if(!empty($mahasiswa->pas_foto))
-                            <img src="{{url('mahasiswa/pas_foto/'. $mahasiswa->pas_foto)}}" style="width:150px; height:200px; display:block; margin-left:auto; margin-right:auto;">
+                            <img src="{{url('mahasiswa/pas_foto/'. $mahasiswa->pas_foto)}}"
+                                style="width:150px; height:200px; display:block; margin-left:auto; margin-right:auto;">
                             @else
-                            <img src="{{url('img/foto3x4.jpg')}}" style="width:150px; height:200px; display:block; margin-left:auto; margin-right:auto;">
+                            <img src="{{url('img/foto3x4.jpg')}}"
+                                style="width:150px; height:200px; display:block; margin-left:auto; margin-right:auto;">
                             @endif
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">NIM</label>
-                        <input type="text" class="form-control" value="{{$mahasiswa->nim}}" spellcheck="disabled" readonly>
+                        <input type="text" class="form-control" value="{{$mahasiswa->nim}}" spellcheck="disabled"
+                            readonly>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Nama Lengkap</label>
-                        <input type="text" class="form-control" value="{{$mahasiswa->nama_lengkap}}" spellcheck="disabled" readonly>
+                        <input type="text" class="form-control" value="{{$mahasiswa->nama_lengkap}}"
+                            spellcheck="disabled" readonly>
                     </div>
                     <div class="row mb-3">
                         <div class="col">
                             <label class="form-label">Jalur Pendaftaran</label>
-                            <input type="text" class="form-control" value="{{$mahasiswa->jalur_pendaftaran->nama}}" spellcheck="disabled" readonly>
+                            <input type="text" class="form-control" value="{{$mahasiswa->jalur_pendaftaran->nama}}"
+                                spellcheck="disabled" readonly>
                         </div>
                         <div class="col">
                             <label class="form-label">Program Studi</label>
-                            <input type="text" class="form-control" value="{{$mahasiswa->program_studi->nama}}" spellcheck="disabled" readonly>
+                            <input type="text" class="form-control" value="{{$mahasiswa->program_studi->nama}}"
+                                spellcheck="disabled" readonly>
                         </div>
                         <div class="col-2">
                             <label class="form-label">Angkatan</label>
-                            <input type="text" class="form-control" value="{{$mahasiswa->angkatan}}" spellcheck="disabled" readonly>
+                            <input type="text" class="form-control" value="{{$mahasiswa->angkatan}}"
+                                spellcheck="disabled" readonly>
                         </div>
                     </div>
                     @if($mahasiswa->koordinator)
                     <div class="mb-3">
                         <label class="form-label">Koordinator</label>
-                        <input type="text" class="form-control" value="{{$mahasiswa->koordinator}}" spellcheck="disabled" readonly>
+                        <input type="text" class="form-control" value="{{$mahasiswa->koordinator}}"
+                            spellcheck="disabled" readonly>
                     </div>
                     @endif
                     <div class="mb-3">
                         <label class="form-label">Status</label>
-                        <input type="text" class="form-control" value="{{$mahasiswa->status}}" spellcheck="disabled" readonly>
+                        <input type="text" class="form-control" value="{{$mahasiswa->status}}" spellcheck="disabled"
+                            readonly>
                     </div>
                     @if(!empty($mahasiswa->krm))
                     <div class="mb-3">
                         <label class="form-label">Kartu Registrasi Mahasiswa (KRM) / Bukti Registrasi Online</label>
-                        <a href="{{route('admin-download-krm-registrasi', ['id' => $mahasiswa->id])}}" target="_blank" class="btn btn-success py-2" style="margin-top: 1px; width:100%;"><i class="fa fa-download"> Download KRM / Bukti Registrasi Online</i></a>
+                        <a href="{{route('admin-download-krm-registrasi', ['id' => $mahasiswa->id])}}" target="_blank"
+                            class="btn btn-success py-2" style="margin-top: 1px; width:100%;"><i class="fa fa-download">
+                                Download KRM / Bukti Registrasi Online</i></a>
                     </div>
                     @endif
                     <div class="mb-3">
                         <label class="form-label">Nama Panggilan</label>
-                        <input type="text" class="form-control" value="{{$mahasiswa->nama_panggilan}}" readonly disabled>
+                        <input type="text" class="form-control" value="{{$mahasiswa->nama_panggilan}}" readonly
+                            disabled>
                     </div>
                     <div class="row mb-3">
                         <div class="col">
                             <label class="form-label">Jenis Kelamin</label>
-                            <input type="text" class="form-control" value="{{$mahasiswa->jenis_kelamin}}" readonly disabled>
+                            <input type="text" class="form-control" value="{{$mahasiswa->jenis_kelamin}}" readonly
+                                disabled>
                         </div>
                         <div class="col">
                             <label class="form-label">Agama</label>
@@ -196,17 +227,20 @@
                         </div>
                         <div class="col">
                             <label class="form-label">Golongan Darah</label>
-                            <input type="text" class="form-control" value="{{$mahasiswa->golongan_darah}}" readonly disabled>
+                            <input type="text" class="form-control" value="{{$mahasiswa->golongan_darah}}" readonly
+                                disabled>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col">
                             <label class="form-label">Tempat Lahir</label>
-                            <input type="text" class="form-control" value="{{$mahasiswa->tempat_lahir}}" readonly disabled>
+                            <input type="text" class="form-control" value="{{$mahasiswa->tempat_lahir}}" readonly
+                                disabled>
                         </div>
                         <div class="col">
                             <label class="form-label">Tanggal Lahir</label>
-                            <input type="date" class="form-control" value="{{$mahasiswa->tanggal_lahir}}" readonly disabled>
+                            <input type="date" class="form-control" value="{{$mahasiswa->tanggal_lahir}}" readonly
+                                disabled>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -215,7 +249,8 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Alamat Sekarang</label>
-                        <textarea class="form-control" rows="3" readonly disabled>{{$mahasiswa->alamat_sekarang}}</textarea>
+                        <textarea class="form-control" rows="3" readonly
+                            disabled>{{$mahasiswa->alamat_sekarang}}</textarea>
                     </div>
                     <div class="row mb-3">
                         <div class="col">
@@ -241,7 +276,8 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Alasan Kuliah</label>
-                        <textarea class="form-control" rows="3" readonly disabled>{{$mahasiswa->alasan_kuliah}}</textarea>
+                        <textarea class="form-control" rows="3" readonly
+                            disabled>{{$mahasiswa->alasan_kuliah}}</textarea>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Minat dan Bakat</label>
@@ -257,7 +293,8 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Jumlah Saudara</label>
-                        <input type="text" class="form-control" value="{{$mahasiswa->jumlah_saudara}}" readonly disabled>
+                        <input type="text" class="form-control" value="{{$mahasiswa->jumlah_saudara}}" readonly
+                            disabled>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Nama Ayah</label>
@@ -273,7 +310,8 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Penyakit Khusus</label>
-                        <textarea class="form-control" rows="3" readonly disabled>{{$mahasiswa->penyakit_khusus}}</textarea>
+                        <textarea class="form-control" rows="3" readonly
+                            disabled>{{$mahasiswa->penyakit_khusus}}</textarea>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Pengalaman Organisasi</label>
@@ -290,7 +328,7 @@
                                 </thead>
                                 <tbody>
                                     @php
-                                        $i = 1;
+                                    $i = 1;
                                     @endphp
                                     @foreach($mahasiswa->organisasis as $organisasi)
                                     <tr>
@@ -300,7 +338,7 @@
                                         <td>{{$organisasi->tahun}}</td>
                                     </tr>
                                     @php
-                                        $i++;
+                                    $i++;
                                     @endphp
                                     @endforeach
                                 </tbody>
@@ -326,7 +364,7 @@
                                 </thead>
                                 <tbody>
                                     @php
-                                        $i = 1;
+                                    $i = 1;
                                     @endphp
                                     @foreach($mahasiswa->prestasis as $prestasi)
                                     <tr>
@@ -335,11 +373,13 @@
                                         <td>{{$prestasi->tingkat}}</td>
                                         <td>{{$prestasi->tahun}}</td>
                                         <td class="text-center">
-                                            <a type="button" class="btn btn-success" href="{{route('admin-download-prestasi-registrasi', ['id' => $prestasi->id])}}" target="_blank"><i class="fa fa-download text-white"></i></a>
+                                            <a type="button" class="btn btn-success"
+                                                href="{{route('admin-download-prestasi-registrasi', ['id' => $prestasi->id])}}"
+                                                target="_blank"><i class="fa fa-download text-white"></i></a>
                                         </td>
                                     </tr>
                                     @php
-                                        $i++;
+                                    $i++;
                                     @endphp
                                     @endforeach
                                 </tbody>
@@ -364,27 +404,33 @@
                 <div class="">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a type="button" class="nav-link" style="cursor: pointer;" data-toggle="modal" data-target="#biodata-modal-{{$loop->index+1}}" data-dismiss="modal">Biodata</a>
+                            <a type="button" class="nav-link" style="cursor: pointer;" data-toggle="modal"
+                                data-target="#biodata-modal-{{$loop->index+1}}" data-dismiss="modal">Biodata</a>
                         </li>
                         <li class="nav-item">
                             <a type="button" class="nav-link active" style="cursor: pointer;">Konfirmasi</a>
                         </li>
                         <li class="nav-item">
-                            <a type="button" class="nav-link" style="cursor: pointer;" data-toggle="modal" data-target="#file-verifikasi-modal-{{$loop->index+1}}" data-dismiss="modal">File Verifikasi</a>
+                            <a type="button" class="nav-link" style="cursor: pointer;" data-toggle="modal"
+                                data-target="#file-verifikasi-modal-{{$loop->index+1}}" data-dismiss="modal">File
+                                Verifikasi</a>
                         </li>
                     </ul>
                 </div>
                 <div class="modal-body" style="max-height: calc(100vh - 210px); overflow-y: auto;">
                     <div class="mb-3">
                         <label class="form-label">Status</label>
-                        <input type="text" class="form-control" value="{{$mahasiswa->status}}" spellcheck="disabled" readonly>
+                        <input type="text" class="form-control" value="{{$mahasiswa->status}}" spellcheck="disabled"
+                            readonly>
                     </div>
-                    @if($mahasiswa->status == 'Mengajukan registrasi' || $mahasiswa->status == 'Mengajukan perbaikan registrasi')
+                    @if($mahasiswa->status == 'Mengajukan registrasi' || $mahasiswa->status == 'Mengajukan perbaikan
+                    registrasi')
                     <form method="POST" action="{{route('admin-note-registrasi', ['id' => $mahasiswa->id])}}">
                         @csrf
                         <div class="mb-3">
                             <label class="form-label">Note</label>
-                            <textarea class="form-control @error('note') is-invalid @enderror" rows="3" name="note" required>{{old('note')}}</textarea>
+                            <textarea class="form-control @error('note') is-invalid @enderror" rows="3" name="note"
+                                required>{{old('note')}}</textarea>
                             <small>*Maksimal 1000 Karakter.</small>
                             @error('note')
                             <div class="invalid-feedback">{{$message}}</div>
@@ -392,10 +438,13 @@
                         </div>
                         <div class="mb-3 row">
                             <div class="col">
-                                <button type="submit" class="btn btn-warning text-white" style="width:100%">Kirim Note</button>
+                                <button type="submit" class="btn btn-warning text-white" style="width:100%">Kirim
+                                    Note</button>
                             </div>
                             <div class="col">
-                                <a type="button" href="{{route('admin-konfirmasi-registrasi', ['id' => $mahasiswa->id])}}" class="btn btn-primary text-white" style="width:100%">Konfirmasi Registrasi</a>
+                                <a type="button"
+                                    href="{{route('admin-konfirmasi-registrasi', ['id' => $mahasiswa->id])}}"
+                                    class="btn btn-primary text-white" style="width:100%">Konfirmasi Registrasi</a>
                             </div>
                         </div>
                     </form>
@@ -414,7 +463,7 @@
                                 </thead>
                                 <tbody>
                                     @php
-                                        $i = 1;
+                                    $i = 1;
                                     @endphp
                                     @foreach($mahasiswa->notes as $note)
                                     <tr>
@@ -423,7 +472,7 @@
                                         <td>{{Carbon\Carbon::parse($note->created_at)->format('H:i:s d-m-Y')}}</td>
                                     </tr>
                                     @php
-                                        $i++;
+                                    $i++;
                                     @endphp
                                     @endforeach
                                 </tbody>
@@ -448,10 +497,12 @@
                 <div class="">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a type="button" class="nav-link" style="cursor: pointer;" data-toggle="modal" data-target="#biodata-modal-{{$loop->index+1}}" data-dismiss="modal">Biodata</a>
+                            <a type="button" class="nav-link" style="cursor: pointer;" data-toggle="modal"
+                                data-target="#biodata-modal-{{$loop->index+1}}" data-dismiss="modal">Biodata</a>
                         </li>
                         <li class="nav-item">
-                            <a type="button" class="nav-link" style="cursor: pointer;" data-toggle="modal" data-target="#konfirmasi-modal-{{$loop->index+1}}" data-dismiss="modal">Konfirmasi</a>
+                            <a type="button" class="nav-link" style="cursor: pointer;" data-toggle="modal"
+                                data-target="#konfirmasi-modal-{{$loop->index+1}}" data-dismiss="modal">Konfirmasi</a>
                         </li>
                         <li class="nav-item">
                             <a type="button" class="nav-link active" style="cursor: pointer;">File Verifikasi</a>
@@ -461,9 +512,13 @@
                 <div class="modal-body" style="max-height: calc(100vh - 210px); overflow-y: auto;">
                     <div class="">
                         @if($mahasiswa->status == "Teregistrasi")
-                            <a href="{{route('admin-download-biodata-registrasi', ['id' => $mahasiswa->id])}}" type="button" class="btn btn-success" target="_blank" style="width:100%;"><i class="fa fa-download"> Download Form Verifikasi Mahasiswa</i></a>
+                        <a href="{{route('admin-download-biodata-registrasi', ['id' => $mahasiswa->id])}}" type="button"
+                            class="btn btn-success" target="_blank" style="width:100%;"><i class="fa fa-download">
+                                Download Form Verifikasi Mahasiswa</i></a>
                         @else
-                            <input type="text" class="form-control" value="{{'Mahasiswa belum Teregistrasi Student Day '.date('Y')}}" spellcheck="disabled" readonly>
+                        <input type="text" class="form-control"
+                            value="{{'Mahasiswa belum Teregistrasi Student Day '.date('Y')}}" spellcheck="disabled"
+                            readonly>
                         @endif
                     </div>
                 </div>
