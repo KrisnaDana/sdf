@@ -1,8 +1,0 @@
--   jalankan perintah `git clone https://github.com/KrisnaDana/sdf.git`
--   jalankan perintah `composer install`
--   konfigurasi koneksi database pada file `.env`
--   jalankan perintah `php artisan migrate`
--   isi data pada tabel admins dengan role sebagai admin dan enkripsi passwordnya pada website `https://bcrypt.online/`
--   jalankan perintah `php artisan serve`
--   halaman login admin pada path `/admin-login`
--   halaman login mahasiswa pada path `/login`
