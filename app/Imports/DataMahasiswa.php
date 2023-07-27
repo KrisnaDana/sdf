@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
 
 class DataMahasiswa implements ToModel
@@ -16,7 +17,7 @@ class DataMahasiswa implements ToModel
     {
         return new User([
             'nim' => $row[0],
-            'password' =>  $row[1],
+            'password' =>  Hash::make($row[1]),
             'nama_lengkap' => $row[2],
             'jalur_pendaftaran_id' => $row[3],
             'program_studi_id' => $row[4],

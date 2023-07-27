@@ -54,11 +54,11 @@ class UserRegistrasiController extends Controller
     {
         $id = Auth::guard('user')->user()->id;
         $user = User::find($id);
-        if(!($user->status == 'Belum registrasi' || $user->status == 'Kesalahan data registrasi')){
+        if (!($user->status == 'Belum registrasi' || $user->status == 'Kesalahan data registrasi')) {
             return redirect()->back();
         }
-        
-        if($user->status == 'Belum registrasi'){
+
+        if ($user->status == 'Belum registrasi') {
             $validated = $request->validate([
                 'pas_foto' => 'required|file|image|mimes:jpg,png,jpeg|max:2048',
                 'krm' => 'required|file|mimes:pdf|max:2048',
@@ -107,51 +107,50 @@ class UserRegistrasiController extends Controller
             $user->nama_ayah = $validated['nama_ayah'];
             $user->nama_ibu = $validated['nama_ibu'];
             $user->konsumsi = $validated['konsumsi'];
-            if(!empty($validated['penyakit_khusus'])){
+            if (!empty($validated['penyakit_khusus'])) {
                 $user->penyakit_khusus = $validated['penyakit_khusus'];
             }
 
             $pas_foto = $request->file('pas_foto');
-            $encrypted = "pas_foto-".$user->nim."-".time();
+            $encrypted = "pas_foto-" . $user->nim . "-" . time();
             $filename = Crypt::encryptString($encrypted) . "." . $pas_foto->getClientOriginalExtension();
             $path = public_path('/mahasiswa/pas_foto');
             $pas_foto->move($path, $filename);
             $user->pas_foto = $filename;
 
             $krm = $request->file('krm');
-            $encrypted = "krm-".$user->nim."-".time();
+            $encrypted = "krm-" . $user->nim . "-" . time();
             $filename = Crypt::encryptString($encrypted) . "." . $krm->getClientOriginalExtension();
             $path = "mahasiswa/krm/";
             Storage::putFileAs($path, $krm, $filename);
             $user->krm = $filename;
 
             $organisasi = Organisasi::where('user_id', $user->id)->get();
-            if($request->organisasi == '1' && count($organisasi) == 0){
+            if ($request->organisasi == '1' && count($organisasi) == 0) {
                 return redirect()->back()->with(["toast" => ["type" => "danger", "message" => "Anda belum mengisi data pada menu organisasi."]]);
-            }else{
-                if(count($organisasi) == 0){
+            } else {
+                if (count($organisasi) == 0) {
                     $user->organisasi = 'Tidak';
-                }else{
+                } else {
                     $user->organisasi = 'Ya';
                 }
             }
 
             $prestasi = Prestasi::where('user_id', $user->id)->get();
-            if($request->prestasi == '1' && count($prestasi) == 0){
+            if ($request->prestasi == '1' && count($prestasi) == 0) {
                 return redirect()->back()->with(["toast" => ["type" => "danger", "message" => "Anda belum mengisi data pada menu prestasi."]]);
-            }else{
-                if(count($prestasi) == 0){
+            } else {
+                if (count($prestasi) == 0) {
                     $user->prestasi = 'Tidak';
-                }else{
+                } else {
                     $user->prestasi = 'Ya';
                 }
             }
 
-            $user->status = 'Mengajukan registrasi';
+            $user->status = 'Teregistrasi';
             $user->save();
             return redirect()->route('view-registrasi')->with(["toast" => ["type" => "success", "message" => "Berhasil mengajukan registrasi."]]);
-
-        }else if($user->status == 'Kesalahan data registrasi'){
+        } else if ($user->status == 'Kesalahan data registrasi') {
             $validated = $request->validate([
                 'pas_foto' => 'nullable|file|image|mimes:jpg,png,jpeg|max:2048',
                 'krm' => 'nullable|file|mimes:pdf|max:2048',
@@ -200,26 +199,26 @@ class UserRegistrasiController extends Controller
             $user->nama_ayah = $validated['nama_ayah'];
             $user->nama_ibu = $validated['nama_ibu'];
             $user->konsumsi = $validated['konsumsi'];
-            if(!empty($validated['penyakit_khusus'])){
+            if (!empty($validated['penyakit_khusus'])) {
                 $user->penyakit_khusus = $validated['penyakit_khusus'];
-            }else{
+            } else {
                 $user->penyakit_khusus = null;
             }
 
-            if(!empty($validated['pas_foto'])){
-                File::delete(public_path('/mahasiswa/pas_foto/'.$user->pas_foto));
+            if (!empty($validated['pas_foto'])) {
+                File::delete(public_path('/mahasiswa/pas_foto/' . $user->pas_foto));
                 $pas_foto = $request->file('pas_foto');
-                $encrypted = "pas_foto-".$user->nim."-".time();
+                $encrypted = "pas_foto-" . $user->nim . "-" . time();
                 $filename = Crypt::encryptString($encrypted) . "." . $pas_foto->getClientOriginalExtension();
                 $path = public_path('/mahasiswa/pas_foto');
                 $pas_foto->move($path, $filename);
                 $user->pas_foto = $filename;
             }
 
-            if(!empty($validated['krm'])){
-                File::delete(storage_path('/app/mahasiswa/krm/'.$user->krm));
+            if (!empty($validated['krm'])) {
+                File::delete(storage_path('/app/mahasiswa/krm/' . $user->krm));
                 $krm = $request->file('krm');
-                $encrypted = "krm-".$user->nim."-".time();
+                $encrypted = "krm-" . $user->nim . "-" . time();
                 $filename = Crypt::encryptString($encrypted) . "." . $krm->getClientOriginalExtension();
                 $path = "mahasiswa/krm/";
                 Storage::putFileAs($path, $krm, $filename);
@@ -227,23 +226,23 @@ class UserRegistrasiController extends Controller
             }
 
             $organisasi = Organisasi::where('user_id', $user->id)->get();
-            if($request->organisasi == '1' && count($organisasi) == 0){
+            if ($request->organisasi == '1' && count($organisasi) == 0) {
                 return redirect()->back()->with(["toast" => ["type" => "danger", "message" => "Anda belum mengisi data pada menu organisasi."]]);
-            }else{
-                if(count($organisasi) == 0){
+            } else {
+                if (count($organisasi) == 0) {
                     $user->organisasi = 'Tidak';
-                }else{
+                } else {
                     $user->organisasi = 'Ya';
                 }
             }
 
             $prestasi = Prestasi::where('user_id', $user->id)->get();
-            if($request->prestasi == '1' && count($prestasi) == 0){
+            if ($request->prestasi == '1' && count($prestasi) == 0) {
                 return redirect()->back()->with(["toast" => ["type" => "danger", "message" => "Anda belum mengisi data pada menu prestasi."]]);
-            }else{
-                if(count($prestasi) == 0){
+            } else {
+                if (count($prestasi) == 0) {
                     $user->prestasi = 'Tidak';
-                }else{
+                } else {
                     $user->prestasi = 'Ya';
                 }
             }
@@ -252,14 +251,14 @@ class UserRegistrasiController extends Controller
             $user->save();
             return redirect()->route('view-registrasi')->with(["toast" => ["type" => "success", "message" => "Berhasil mengajukan perbaikan registrasi."]]);
         }
-        
+
         return redirect()->route('view-registrasi');
     }
 
     public function downloadKrm(): HttpFoundationResponse
     {
         $user = Auth::guard('user')->user();
-        $filename = "krm-".$user->nim.".pdf";
-        return response()->download(storage_path('/app/mahasiswa/krm/'.$user->krm), $filename);
+        $filename = "krm-" . $user->nim . ".pdf";
+        return response()->download(storage_path('/app/mahasiswa/krm/' . $user->krm), $filename);
     }
 }

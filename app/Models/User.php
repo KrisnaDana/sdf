@@ -3,12 +3,19 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use App\Models\Note;
+use App\Models\Gugus;
+use App\Models\Prestasi;
+use App\Models\Organisasi;
+use App\Models\DetailGugus;
+use App\Models\ProgramStudi;
+use App\Models\JalurPendaftaran;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -48,6 +55,16 @@ class User extends Authenticatable
     public function jalur_pendaftaran(): BelongsTo
     {
         return $this->belongsTo(JalurPendaftaran::class);
+    }
+
+    public function gugus(): BelongsTo
+    {
+        return $this->belongsTo(Gugus::class);
+    }
+
+    public function detail_gugus(): BelongsTo
+    {
+        return $this->belongsTo(DetailGugus::class);
     }
 
     public function organisasis(): HasMany

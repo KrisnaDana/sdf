@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('nama_lengkap');
             $table->foreignId('jalur_pendaftaran_id')->constrained('jalur_pendaftarans'); //data termasuk mahasiswa lama
             $table->foreignId('program_studi_id')->constrained('program_studis');
+            $table->foreignId('gugus_id')->constrained('guguses');
+            $table->string('no_gugus');
             $table->year('angkatan');
             $table->enum('ganti_password', ['Sudah', 'Belum'])->default("Belum");
             $table->text('pas_foto')->nullable();
@@ -48,8 +50,6 @@ return new class extends Migration
             $table->string('penyakit_khusus')->nullable();
             $table->enum('organisasi', ['Ya', 'Tidak'])->nullable();
             $table->enum('prestasi', ['Ya', 'Tidak'])->nullable();
-            $table->string('gugus');
-            $table->string('no_gugus');
             $table->rememberToken();
             $table->timestamps();
         });

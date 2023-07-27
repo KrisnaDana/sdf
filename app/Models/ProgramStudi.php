@@ -12,11 +12,13 @@ class ProgramStudi extends Model
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
-    public function users(): HasMany {
+    public function users(): HasMany
+    {
         return $this->hasMany(User::class);
     }
 
-    public function periode_pendaftarans(): HasMany {
+    public function periode_pendaftarans(): HasMany
+    {
         return $this->hasMany(PeriodePendaftarans::class);
     }
 }

@@ -92,6 +92,9 @@
                                         <li><a href="{{route('admin-view-program-studi')}}"><i
                                                     class="fa fa-university yellow_color"></i> <span>Program
                                                     Studi</span></a></li>
+                                        <li><a href="{{route('admin-view-gugus')}}"><i
+                                                    class="fa fa-users black_color"></i> <span>Gugus</span></a>
+                                        </li>
                                         <li><a href="{{route('admin-view-jalur-pendaftaran')}}"><i
                                                     class="fa fa-fire purple_color"></i> <span>Jalur
                                                     Pendaftaran</span></a></li>

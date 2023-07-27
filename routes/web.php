@@ -23,7 +23,7 @@ use App\Http\Controllers\Admin\AdminPeriodePendaftaranController;
 use App\Http\Controllers\Admin\AdminPengumumanController;
 use App\Http\Controllers\Admin\AdminBerkasController;
 use App\Http\Controllers\Admin\AdminRegistrasiController;
-
+use App\Http\Controllers\Admin\AdminGugusController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -117,6 +117,15 @@ Route::middleware(['throttle:60,1'])->group(function () {
         Route::post('/admin/edit-program-studi/{id}', [AdminProgramStudiController::class, 'edit'])->name('admin-edit-program-studi');
         Route::get('/admin/delete-program-studi-qr-code/{id}', [AdminProgramStudiController::class, 'deleteQrCode'])->name('admin-delete-program-studi-qr-code');
         Route::post('/admin/delete-program-studi/{id}', [AdminProgramStudiController::class, 'delete'])->name('admin-delete-program-studi');
+
+        Route::get('/admin/gugus', [AdminGugusController::class, 'index'])->name('admin-view-gugus');
+        Route::get('/admin/gugus/{id}', [AdminGugusController::class, 'read'])->name('admin-read-gugus');
+        Route::get('/admin/create-gugus', [AdminGugusController::class, 'viewCreate'])->name('admin-view-create-gugus');
+        Route::post('/admin/create-gugus', [AdminGugusController::class, 'create'])->name('admin-create-gugus');
+        Route::get('/admin/edit-gugus/{id}', [AdminGugusController::class, 'viewEdit'])->name('admin-view-edit-gugus');
+        Route::post('/admin/edit-gugus/{id}', [AdminGugusController::class, 'edit'])->name('admin-edit-gugus');
+        Route::get('/admin/delete-gugus-qr-code/{id}', [AdminGugusController::class, 'deleteQrCode'])->name('admin-delete-gugus-qr-code');
+        Route::post('/admin/delete-gugus/{id}', [AdminGugusController::class, 'delete'])->name('admin-delete-gugus');
 
         Route::get('/admin/periode-pendaftaran', [AdminPeriodePendaftaranController::class, 'index'])->name('admin-view-periode-pendaftaran');
         Route::get('/admin/create-periode-pendaftaran', [AdminPeriodePendaftaranController::class, 'viewCreate'])->name('admin-view-create-periode-pendaftaran');
