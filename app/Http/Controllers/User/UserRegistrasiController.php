@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Note;
-use App\Models\Organisasi;
-use App\Models\Prestasi;
 use App\Models\User;
-use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
+use App\Models\Gugus;
+use App\Models\Prestasi;
+use Illuminate\View\View;
+use App\Models\Organisasi;
+use App\Models\DetailGugus;
+use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Crypt;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
 
 class UserRegistrasiController extends Controller
 {
@@ -109,6 +111,7 @@ class UserRegistrasiController extends Controller
             $user->konsumsi = $validated['konsumsi'];
             if (!empty($validated['penyakit_khusus'])) {
                 $user->penyakit_khusus = $validated['penyakit_khusus'];
+                $this->addMahasiswaToGugus($user);
             }
 
             $pas_foto = $request->file('pas_foto');
@@ -260,5 +263,59 @@ class UserRegistrasiController extends Controller
         $user = Auth::guard('user')->user();
         $filename = "krm-" . $user->nim . ".pdf";
         return response()->download(storage_path('/app/mahasiswa/krm/' . $user->krm), $filename);
+    }
+    public function addMahasiswaToGugus(User $user)
+    {
+        // Check if the user is already assigned to a gugus in the detail_gugus table
+        $existingDetailGugus = DetailGugus::where('user_id', $user->id)->first();
+
+        if (!$existingDetailGugus) {
+            // Retrieve the current 'gugus_id' from the last user assigned to a gugus
+            $lastUser = User::where('gugus_id', '!=', null)->orderBy('id', 'desc')->first();
+            $currentGugus = $lastUser ? $lastUser->gugus_id : 0;
+            $gugusId = $this->generateGugusId($currentGugus);
+
+            // Retrieve the 'no_gugus' for the user based on the current 'gugus_id'
+            $noGugus = DetailGugus::where('gugus_id', $gugusId)->max('no_gugus_mahasiswa');
+            $noGugus = $this->generateNoGugus($noGugus);
+
+            // Save data in the detail_gugus table
+            DetailGugus::create([
+                'user_id' => $user->id,
+                'gugus_id' => $gugusId,
+                'no_gugus_mahasiswa' => $noGugus,
+            ]);
+
+            // Update the user's 'gugus_id' and 'no_gugus'
+            $user->gugus_id = $gugusId;
+            $user->no_gugus = 'No Urut ' . $noGugus; // Properly concatenate "No Urut" with $noGugus
+            $user->save();
+        }
+    }
+
+    public function generateGugusId($currentGugus)
+    {
+        $totalGugus = 10; // Total number of available gugus
+
+        // If the current gugus has reached the total gugus,
+        // reset it to 1, otherwise increment it by 1
+        if ($currentGugus >= $totalGugus) {
+            return 1;
+        } else {
+            return $currentGugus + 1;
+        }
+    }
+
+    public function generateNoGugus($noGugusMahasiswaTerakhir)
+    {
+        $totalGugus = 10; // Total number of available gugus
+
+        // If the no_gugus_mahasiswa_terakhir has reached the total gugus,
+        // reset it to 1, otherwise increment it by 1
+        if ($noGugusMahasiswaTerakhir >= $totalGugus) {
+            return 1;
+        } else {
+            return $noGugusMahasiswaTerakhir + 1;
+        }
     }
 }

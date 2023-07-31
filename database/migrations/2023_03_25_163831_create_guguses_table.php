@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('guguses', function (Blueprint $table) {
             $table->id();
-            $table->string('gugus');
+            $table->string('gugus')->default(0);
             $table->string('link_gugus')->nullable();
             $table->string('file_qr_gugus')->nullable();
             $table->string('no_gugus_mahasiswa_terakhir')->nullable();
