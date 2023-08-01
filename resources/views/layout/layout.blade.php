@@ -130,12 +130,12 @@
                                         <li><a href="{{route('view-registrasi')}}"><i
                                                     class="fa fa-graduation-cap blue1_color"></i>
                                                 <span>Registrasi</span></a></li>
-                                        <li><a href="{{route('view-organisasi')}}"><i
+                                        {{-- <li><a href="{{route('view-organisasi')}}"><i
                                                     class="fa fa-group orange_color"></i> <span>Organisasi</span></a>
                                         </li>
                                         <li><a href="{{route('view-prestasi')}}"><i
                                                     class="fa fa-trophy yellow_color"></i> <span>Prestasi</span></a>
-                                        </li>
+                                        </li> --}}
                                         @endif
                                         @if(!empty($user) && $user->status == "Teregistrasi")
                                         <li><a href="{{route('view-qrcode')}}"><i class="fa fa-qrcode blue2_color"></i>

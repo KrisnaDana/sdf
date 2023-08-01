@@ -63,51 +63,51 @@ class UserRegistrasiController extends Controller
         if ($user->status == 'Belum registrasi') {
             $validated = $request->validate([
                 'pas_foto' => 'required|file|image|mimes:jpg,png,jpeg|max:2048',
-                'krm' => 'required|file|mimes:pdf|max:2048',
-                'nama_panggilan' => 'required|string|min:1|max:50',
-                'jenis_kelamin' => 'required|string|in:Laki-laki,Perempuan',
-                'agama' => 'required|string|in:Hindu,Islam,Budha,Konghucu,Kristen Protestan,Kristen Katolik,Kristen Advent,Penganut Kepercayaan',
-                'golongan_darah' => 'required|in:A,AB,B,O',
-                'tempat_lahir' => 'required|string|min:1|max:300',
-                'tanggal_lahir' => 'required|date_format:Y-m-d',
-                'alamat_asal' => 'required|string|min:1|max:300',
-                'alamat_sekarang' => 'required|string|min:1|max:300',
-                'no_telepon' => 'required|string|min:3|max:20',
-                'no_hp' => 'required|string|min:3|max:20',
-                'id_line' => 'required|string|min:1|max:50',
-                'email' => 'required|string|email:rfc,dns|max:100',
-                'asal_sekolah' => 'required|string|min:1|max:100',
-                'alasan_kuliah' => 'required|string|min:1|max:1000',
-                'minat_bakat' => 'required|string|min:1|max:200',
-                'cita_cita' => 'required|string|min:1|max:50',
-                'idola' => 'required|string|min:1|max:50',
-                'jumlah_saudara' => 'required|integer|min:0|max:20',
-                'nama_ayah' => 'required|string|min:1|max:100',
-                'nama_ibu' => 'required|string|min:1|max:100',
+                // 'krm' => 'required|file|mimes:pdf|max:2048',
+                // 'nama_panggilan' => 'required|string|min:1|max:50',
+                // 'jenis_kelamin' => 'required|string|in:Laki-laki,Perempuan',
+                // 'agama' => 'required|string|in:Hindu,Islam,Budha,Konghucu,Kristen Protestan,Kristen Katolik,Kristen Advent,Penganut Kepercayaan',
+                // 'golongan_darah' => 'required|in:A,AB,B,O',
+                // 'tempat_lahir' => 'required|string|min:1|max:300',
+                // 'tanggal_lahir' => 'required|date_format:Y-m-d',
+                // 'alamat_asal' => 'required|string|min:1|max:300',
+                // 'alamat_sekarang' => 'required|string|min:1|max:300',
+                // 'no_telepon' => 'required|string|min:3|max:20',
+                // 'no_hp' => 'required|string|min:3|max:20',
+                // 'id_line' => 'required|string|min:1|max:50',
+                // 'email' => 'required|string|email:rfc,dns|max:100',
+                // 'asal_sekolah' => 'required|string|min:1|max:100',
+                // 'alasan_kuliah' => 'required|string|min:1|max:1000',
+                // 'minat_bakat' => 'required|string|min:1|max:200',
+                // 'cita_cita' => 'required|string|min:1|max:50',
+                // 'idola' => 'required|string|min:1|max:50',
+                // 'jumlah_saudara' => 'required|integer|min:0|max:20',
+                // 'nama_ayah' => 'required|string|min:1|max:100',
+                // 'nama_ibu' => 'required|string|min:1|max:100',
                 'konsumsi' => 'required|in:Non-Vegetarian,Vegetarian',
                 'penyakit_khusus' => 'nullable|string|min:1|max:200'
             ]);
 
-            $user->nama_panggilan = $validated['nama_panggilan'];
-            $user->jenis_kelamin = $validated['jenis_kelamin'];
-            $user->agama = $validated['agama'];
-            $user->golongan_darah = $validated['golongan_darah'];
-            $user->tempat_lahir = $validated['tempat_lahir'];
-            $user->tanggal_lahir = Carbon::parse($validated['tanggal_lahir'])->format('Y-m-d');
-            $user->alamat_asal = $validated['alamat_asal'];
-            $user->alamat_sekarang = $validated['alamat_sekarang'];
-            $user->no_telepon = $validated['no_telepon'];
-            $user->no_hp = $validated['no_hp'];
-            $user->id_line = $validated['id_line'];
-            $user->email = $validated['email'];
-            $user->asal_sekolah = $validated['asal_sekolah'];
-            $user->alasan_kuliah = $validated['alasan_kuliah'];
-            $user->minat_bakat = $validated['minat_bakat'];
-            $user->cita_cita = $validated['cita_cita'];
-            $user->idola = $validated['idola'];
-            $user->jumlah_saudara = $validated['jumlah_saudara'];
-            $user->nama_ayah = $validated['nama_ayah'];
-            $user->nama_ibu = $validated['nama_ibu'];
+            // $user->nama_panggilan = $validated['nama_panggilan'];
+            // $user->jenis_kelamin = $validated['jenis_kelamin'];
+            // $user->agama = $validated['agama'];
+            // $user->golongan_darah = $validated['golongan_darah'];
+            // $user->tempat_lahir = $validated['tempat_lahir'];
+            // $user->tanggal_lahir = Carbon::parse($validated['tanggal_lahir'])->format('Y-m-d');
+            // $user->alamat_asal = $validated['alamat_asal'];
+            // $user->alamat_sekarang = $validated['alamat_sekarang'];
+            // $user->no_telepon = $validated['no_telepon'];
+            // $user->no_hp = $validated['no_hp'];
+            // $user->id_line = $validated['id_line'];
+            // $user->email = $validated['email'];
+            // $user->asal_sekolah = $validated['asal_sekolah'];
+            // $user->alasan_kuliah = $validated['alasan_kuliah'];
+            // $user->minat_bakat = $validated['minat_bakat'];
+            // $user->cita_cita = $validated['cita_cita'];
+            // $user->idola = $validated['idola'];
+            // $user->jumlah_saudara = $validated['jumlah_saudara'];
+            // $user->nama_ayah = $validated['nama_ayah'];
+            // $user->nama_ibu = $validated['nama_ibu'];
             $user->konsumsi = $validated['konsumsi'];
             if (!empty($validated['penyakit_khusus'])) {
                 $user->penyakit_khusus = $validated['penyakit_khusus'];
@@ -121,12 +121,12 @@ class UserRegistrasiController extends Controller
             $pas_foto->move($path, $filename);
             $user->pas_foto = $filename;
 
-            $krm = $request->file('krm');
-            $encrypted = "krm-" . $user->nim . "-" . time();
-            $filename = Crypt::encryptString($encrypted) . "." . $krm->getClientOriginalExtension();
-            $path = "mahasiswa/krm/";
-            Storage::putFileAs($path, $krm, $filename);
-            $user->krm = $filename;
+            // $krm = $request->file('krm');
+            // $encrypted = "krm-" . $user->nim . "-" . time();
+            // $filename = Crypt::encryptString($encrypted) . "." . $krm->getClientOriginalExtension();
+            // // $path = "mahasiswa/krm/";
+            // Storage::putFileAs($path, $krm, $filename);
+            // $user->krm = $filename;
 
             $organisasi = Organisasi::where('user_id', $user->id)->get();
             if ($request->organisasi == '1' && count($organisasi) == 0) {
@@ -266,39 +266,34 @@ class UserRegistrasiController extends Controller
     }
     public function addMahasiswaToGugus(User $user)
     {
-        // Check if the user is already assigned to a gugus in the detail_gugus table
+        // Cek dulu apakah user sudah ada di tabel detail gugus
         $existingDetailGugus = DetailGugus::where('user_id', $user->id)->first();
 
         if (!$existingDetailGugus) {
-            // Retrieve the current 'gugus_id' from the last user assigned to a gugus
+            // Mendapatkan user terakhir yang berada pada gugus
             $lastUser = User::where('gugus_id', '!=', null)->orderBy('id', 'desc')->first();
             $currentGugus = $lastUser ? $lastUser->gugus_id : 0;
             $gugusId = $this->generateGugusId($currentGugus);
 
-            // Retrieve the 'no_gugus' for the user based on the current 'gugus_id'
             $noGugus = DetailGugus::where('gugus_id', $gugusId)->max('no_gugus_mahasiswa');
             $noGugus = $this->generateNoGugus($noGugus);
 
-            // Save data in the detail_gugus table
             DetailGugus::create([
                 'user_id' => $user->id,
                 'gugus_id' => $gugusId,
                 'no_gugus_mahasiswa' => $noGugus,
             ]);
 
-            // Update the user's 'gugus_id' and 'no_gugus'
             $user->gugus_id = $gugusId;
-            $user->no_gugus = 'No Urut ' . $noGugus; // Properly concatenate "No Urut" with $noGugus
+            $user->no_gugus = 'No Urut ' . $noGugus;
             $user->save();
         }
     }
 
     public function generateGugusId($currentGugus)
     {
-        $totalGugus = 10; // Total number of available gugus
+        $totalGugus = 10;
 
-        // If the current gugus has reached the total gugus,
-        // reset it to 1, otherwise increment it by 1
         if ($currentGugus >= $totalGugus) {
             return 1;
         } else {
@@ -308,10 +303,8 @@ class UserRegistrasiController extends Controller
 
     public function generateNoGugus($noGugusMahasiswaTerakhir)
     {
-        $totalGugus = 10; // Total number of available gugus
+        $totalGugus = 10;
 
-        // If the no_gugus_mahasiswa_terakhir has reached the total gugus,
-        // reset it to 1, otherwise increment it by 1
         if ($noGugusMahasiswaTerakhir >= $totalGugus) {
             return 1;
         } else {
