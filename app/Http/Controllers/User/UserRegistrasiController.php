@@ -84,7 +84,7 @@ class UserRegistrasiController extends Controller
                 // 'jumlah_saudara' => 'required|integer|min:0|max:20',
                 // 'nama_ayah' => 'required|string|min:1|max:100',
                 // 'nama_ibu' => 'required|string|min:1|max:100',
-                'konsumsi' => 'required|in:Non-Vegetarian,Vegetarian',
+                // 'konsumsi' => 'required|in:Non-Vegetarian,Vegetarian',
                 'penyakit_khusus' => 'nullable|string|min:1|max:200'
             ]);
 
@@ -107,12 +107,12 @@ class UserRegistrasiController extends Controller
             // $user->idola = $validated['idola'];
             // $user->jumlah_saudara = $validated['jumlah_saudara'];
             // $user->nama_ayah = $validated['nama_ayah'];
-            // $user->nama_ibu = $validated['nama_ibu'];
-            $user->konsumsi = $validated['konsumsi'];
-            if (!empty($validated['penyakit_khusus'])) {
-                $user->penyakit_khusus = $validated['penyakit_khusus'];
-                $this->addMahasiswaToGugus($user);
-            }
+            // // $user->nama_ibu = $validated['nama_ibu'];
+            // $user->konsumsi = $validated['konsumsi'];
+            // if (!empty($validated['penyakit_khusus'])) {
+            //     $user->penyakit_khusus = $validated['penyakit_khusus'];
+            //     $this->addMahasiswaToGugus($user);
+            // }
 
             $pas_foto = $request->file('pas_foto');
             $encrypted = "pas_foto-" . $user->nim . "-" . time();
@@ -285,7 +285,7 @@ class UserRegistrasiController extends Controller
             ]);
 
             $user->gugus_id = $gugusId;
-            $user->no_gugus = 'No Urut ' . $noGugus;
+            $user->no_gugus = $noGugus;
             $user->save();
         }
     }

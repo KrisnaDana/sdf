@@ -339,7 +339,7 @@
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div> --}}
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label class="form-label">Konsumsi <span style="color:#FF0000">*</span></label>
                         <select class="form-control" name="konsumsi">
                             @foreach($konsumsis as $konsumsi)
@@ -351,7 +351,7 @@
                             @endif
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="mb-3">
                         <label class="form-label">Penyakit Khusus</label>
                         <textarea class="form-control @error('penyakit_khusus') is-invalid @enderror" rows="3"
@@ -556,10 +556,10 @@
                     <label class="form-label">Nama Ibu</label>
                     <input type="text" class="form-control" value="{{$user->nama_ibu}}" readonly disabled>
                 </div> --}}
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label class="form-label">Konsumsi</label>
                     <input type="text" class="form-control" value="{{$user->konsumsi}}" readonly disabled>
-                </div>
+                </div> --}}
                 <div class="mb-3">
                     <label class="form-label">Penyakit Khusus</label>
                     <textarea class="form-control" rows="3" readonly disabled>{{$user->penyakit_khusus}}</textarea>
