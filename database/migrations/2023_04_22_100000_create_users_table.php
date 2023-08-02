@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nim')->unique();
             $table->string('password');
             $table->string('nama_lengkap');
-            $table->foreignId('jalur_pendaftaran_id')->constrained('jalur_pendaftarans'); //data termasuk mahasiswa lama
+            $table->foreignId('jalur_pendaftaran_id')->constrained('jalur_pendaftarans');
             $table->foreignId('program_studi_id')->constrained('program_studis');
             $table->foreignId('gugus_id')->nullable()->constrained('guguses');
             $table->string('no_gugus')->nullable();

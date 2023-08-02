@@ -71,8 +71,27 @@
                         </select>
                     </div>
                     <div class="ml-4">
-                        <a href="export/excel" class="btn btn-primary">Export Data</a>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Export Data
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="export/excel">Export Semuanya</a></li>
+                                <li><a class="dropdown-item" href="export/excel">Gugus 1</a></li>
+                                <li><a class="dropdown-item" href="export/excel">Gugus 2</a></li>
+                                <li><a class="dropdown-item" href="export/excel">Gugus 3</a></li>
+                                <li><a class="dropdown-item" href="export/excel">Gugus 4</a></li>
+                                <li><a class="dropdown-item" href="export/excel">Gugus 5</a></li>
+                                <li><a class="dropdown-item" href="export/excel">Gugus 6</a></li>
+                                <li><a class="dropdown-item" href="export/excel">Gugus 7</a></li>
+                                <li><a class="dropdown-item" href="export/excel">Gugus 8</a></li>
+                                <li><a class="dropdown-item" href="export/excel">Gugus 9</a></li>
+                                <li><a class="dropdown-item" href="export/excel">Gugus 10</a></li>
+                            </ul>
+                        </div>
                     </div>
+
 
                     <div class="ml-4">
                         <a

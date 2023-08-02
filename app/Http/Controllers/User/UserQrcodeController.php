@@ -12,13 +12,20 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class UserQrcodeController extends Controller
 {
-    public function index(): View {
+    public function index(): View
+    {
         $user = Auth::guard('user')->user();
         return view('user.qr-code', compact('user'));
     }
 
-    public function link(): RedirectResponse {
+    public function link(): RedirectResponse
+    {
         $link = Auth::guard('user')->user()->program_studi->link_grup;
+        return redirect()->away($link);
+    }
+    public function linkgugus(): RedirectResponse
+    {
+        $link = Auth::guard('user')->user()->gugus->link_gugus;
         return redirect()->away($link);
     }
 }

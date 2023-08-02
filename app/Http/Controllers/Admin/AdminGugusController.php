@@ -49,10 +49,10 @@ class AdminGugusController extends Controller
             $gugus['link_gugus'] = $validated['link_gugus'];
         }
         if (!empty($validated['file_qr_gugus'])) {
-            $qrcode = $request->file('file_qr_gugus');
-            $filename = Str::slug($validated['gugus']) . '.' . $qrcode->getClientOriginalExtension();
+            $file_qr_gugus = $request->file('file_qr_gugus');
+            $filename = Str::slug($validated['gugus']) . '.' . $file_qr_gugus->getClientOriginalExtension();
             $path = public_path('/img/file_qr_gugus');
-            $qrcode->move($path, $filename);
+            $file_qr_gugus->move($path, $filename);
             $gugus['file_qr_gugus'] = $filename;
         }
         Gugus::create($gugus);
@@ -88,14 +88,14 @@ class AdminGugusController extends Controller
             $gugus->file_qr_gugus = $filename;
         }
         $gugus->save();
-        return redirect()->route('admin-view-edit-gugus', ['id' => $id])->with(["toast" => ["type" => "success", "message" => "Berhasil mengubah program studi."]]);
+        return redirect()->route('admin-view-edit-gugus', ['id' => $id])->with(["toast" => ["type" => "success", "message" => "Berhasil mengubah gugus."]]);
     }
 
     public function deleteQrCode($id): RedirectResponse
     {
         $gugus = Gugus::find($id);
         if (!empty($gugus->file_qr_gugus)) {
-            File::delete(public_path('/img/qrcode/') . $gugus->file_qr_gugus);
+            File::delete(public_path('/img/file_qr_gugus/') . $gugus->file_qr_gugus);
             $gugus->file_qr_gugus = null;
             $gugus->save();
             return redirect()->route('admin-view-edit-gugus', ['id' => $id])->with(["toast" => ["type" => "success", "message" => "Berhasil menghapus Gugus."]]);
@@ -119,8 +119,8 @@ class AdminGugusController extends Controller
             }
         }
         $gugus = Gugus::find($id);
-        if (!empty($gugus->file_qr)) {
-            File::delete(public_path('/img/qrcode/') . $gugus->file_qr_gugus);
+        if (!empty($gugus->file_qr_gugus)) {
+            File::delete(public_path('/img/file_qr_gugus/') . $gugus->file_qr_gugus);
         }
         $gugus->delete();
         return redirect()->route('admin-view-gugus')->with(["toast" => ["type" => "success", "message" => "Berhasil menghapus gugus."]]);

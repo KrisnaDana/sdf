@@ -17,7 +17,8 @@
                 @if($user->koordinator == "Ya")
                 <div class="mb-4">
                     <div class="alert alert-primary" role="alert">
-                        <i class="fa fa-info-circle"></i>&nbsp;&nbsp;Selamat anda dipilih menjadi Koordinator Angkatan Program Studi!
+                        <i class="fa fa-info-circle"></i>&nbsp;&nbsp;Selamat anda dipilih menjadi Koordinator Angkatan
+                        Program Studi!
                     </div>
                 </div>
                 @endif
@@ -25,7 +26,17 @@
                     <img src="{{url('/img/qrcode/', $user->program_studi->file_qr)}}" style="width:100%;">
                 </div>
                 <div class="mb-3">
-                    <a href="{{route('link-qrcode')}}" style="width:100%;" type="button" target="_blank" class="model_bt btn btn-success"><i class="fa fa-sign-in text-white"></i>&nbsp;&nbsp;Bergabung ke Grup</a>
+                    <a href="{{route('link-qrcode')}}" style="width:100%;" type="button" target="_blank"
+                        class="model_bt btn btn-success"><i class="fa fa-sign-in text-white"></i>&nbsp;&nbsp;Bergabung
+                        ke Grup</a>
+                </div>
+                <div class="text-center mb-4">
+                    <img src="{{url('/img/file_qr_gugus/', $user->gugus->file_qr_gugus)}}" style="width:100%;">
+                </div>
+                <div class="mb-3">
+                    <a href="{{route('link-qrcode-gugus')}}" style="width:100%;" type="button" target="_blank"
+                        class="model_bt btn btn-success"><i class="fa fa-sign-in text-white"></i>&nbsp;&nbsp;Bergabung
+                        ke Grup</a>
                 </div>
             </div>
         </div>
